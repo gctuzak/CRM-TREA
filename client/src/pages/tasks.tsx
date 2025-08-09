@@ -24,6 +24,17 @@ interface Task {
     ID: number;
     NAME: string;
   };
+  user?: {
+    ID: number;
+    NAME: string;
+  };
+}
+
+interface User {
+  ID: number;
+  NAME: string;
+  EMAIL?: string;
+  ROLE?: string;
 }
 
 export default function Tasks() {
@@ -39,16 +50,22 @@ export default function Tasks() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [newTask, setNewTask] = useState({
     NOTE: '',
-    DATETIMEDUE: '',
     STATUS: 'New',
-    TYPEID: ''
+    TYPEID: '',
+    CONTACTID: '',
+    OPPORTUNITYID: '',
+    DATETIME: new Date().toISOString().split('T')[0],
+    DATETIMEDUE: '',
+    USERID: ''
   });
   const [taskTypes, setTaskTypes] = useState<{ID: number, NAME: string}[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const router = useRouter();
 
   useEffect(() => {
     fetchTasks();
     fetchTaskTypes();
+    fetchUsers();
   }, []);
 
   const fetchTaskTypes = async () => {
@@ -60,6 +77,18 @@ export default function Tasks() {
       }
     } catch (err) {
       console.error('Task types yüklenirken hata:', err);
+    }
+  };
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?limit=100`);
+      if (response.ok) {
+        const data = await response.json();
+        setUsers(data.users || []);
+      }
+    } catch (err) {
+      console.error('Users fetch error:', err);
     }
   };
 
@@ -186,6 +215,8 @@ export default function Tasks() {
         note: newTask.NOTE,
         status: newTask.STATUS,
         typeId: parseInt(newTask.TYPEID),
+        userId: parseInt(newTask.USERID),
+        datetime: newTask.DATETIME ? new Date(newTask.DATETIME).toISOString() : new Date().toISOString(),
         datetimeDue: newTask.DATETIMEDUE ? new Date(newTask.DATETIMEDUE).toISOString() : null
       };
 
@@ -202,8 +233,10 @@ export default function Tasks() {
         setNewTask({
           NOTE: '',
           DATETIMEDUE: '',
+          DATETIME: new Date().toISOString().slice(0, 16),
           STATUS: 'New',
-          TYPEID: ''
+          TYPEID: '',
+          USERID: ''
         });
         setCurrentPage(1);
         setHasNextPage(true);
@@ -261,15 +294,22 @@ export default function Tasks() {
                     placeholder="Görev açıklamasını girin..."
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Son Tarih</label>
-                    <input
-                      type="datetime-local"
-                      value={newTask.DATETIMEDUE}
-                      onChange={(e) => setNewTask({...newTask, DATETIMEDUE: e.target.value})}
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Atanan Kullanıcı *</label>
+                    <select
+                      required
+                      value={newTask.USERID}
+                      onChange={(e) => setNewTask({...newTask, USERID: e.target.value})}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    >
+                      <option value="">Kullanıcı seçin...</option>
+                      {users.map(user => (
+                        <option key={user.ID} value={user.ID}>
+                          {user.NAME} {user.EMAIL && `(${user.EMAIL})`}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Durum</label>
@@ -284,12 +324,33 @@ export default function Tasks() {
                     </select>
                   </div>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Başlangıç Tarihi *</label>
+                    <input
+                      type="datetime-local"
+                      required
+                      value={newTask.DATETIME}
+                      onChange={(e) => setNewTask({...newTask, DATETIME: e.target.value})}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Bitiş Tarihi</label>
+                    <input
+                      type="datetime-local"
+                      value={newTask.DATETIMEDUE}
+                      onChange={(e) => setNewTask({...newTask, DATETIMEDUE: e.target.value})}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Görev Tipi *</label>
                   <select
                     required
                     value={newTask.TYPEID}
-                    onChange={(e) => setNewTask({...newTask, TYPEID: parseInt(e.target.value)})}
+                    onChange={(e) => setNewTask({...newTask, TYPEID: e.target.value})}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">Görev tipi seçin...</option>
@@ -353,6 +414,11 @@ export default function Tasks() {
                         }
                       </div>
                       <div className="flex items-center space-x-2 mt-1">
+                        {task.user && (
+                          <div className="text-xs text-blue-600">
+                            👨‍💼 {task.user.NAME}
+                          </div>
+                        )}
                         {task.contact && (
                           <div className="text-xs text-gray-500">
                             👤 {task.contact.NAME}

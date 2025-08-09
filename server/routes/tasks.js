@@ -65,6 +65,12 @@ router.get('/', async (req, res) => {
           as: 'taskType',
           attributes: ['ID', 'NAME'],
           required: false
+        },
+        {
+          model: User,
+          as: 'assignedUser',
+          attributes: ['ID', 'NAME', 'EMAIL'],
+          required: false
         }
       ],
       order: [['DATETIME', 'DESC']],
@@ -312,6 +318,7 @@ router.post('/', async (req, res) => {
       jobId,
       parentTaskId,
       userId,
+      datetime,
       datetimeDue,
       recur,
       recurDueDate,
@@ -320,7 +327,7 @@ router.post('/', async (req, res) => {
 
     const task = await Task.create({
       USERID: userId || 1,
-      DATETIME: new Date(),
+      DATETIME: datetime ? new Date(datetime) : new Date(),
       DATETIMEDUE: datetimeDue || null,
       NOTE: note || '',
       STATUS: status || 'New',

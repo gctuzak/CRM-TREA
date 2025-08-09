@@ -160,7 +160,7 @@ Contact.searchByName = function(searchTerm, options = {}) {
         required: false
       }
     ],
-    order: [['NAME', 'ASC']],
+    order: [['TYPE', 'DESC'], ['NAME', 'ASC']],
     limit,
     offset,
     distinct: true
@@ -239,7 +239,7 @@ Contact.findWithPagination = function(options = {}) {
         required: false
       }
     ],
-    order: [['NAME', 'ASC']],
+    order: [['TYPE', 'DESC'], ['NAME', 'ASC']],
     limit,
     offset,
     distinct: true

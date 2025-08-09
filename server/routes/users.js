@@ -239,11 +239,8 @@ router.delete('/:id', async (req, res) => {
       });
     }
 
-    // Soft delete by updating status
-    await user.update({
-      STATUS: 'inactive',
-      STAMP: new Date()
-    });
+    // Hard delete - permanently remove from database
+    await user.destroy();
 
     res.json({
       message: 'User deleted successfully'

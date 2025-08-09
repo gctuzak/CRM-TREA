@@ -9,14 +9,18 @@ const User = sequelize.define('USER', {
   },
   NAME: {
     type: DataTypes.STRING(100),
-    allowNull: false
+    allowNull: false,
+    charset: 'utf8mb4',
+    collate: 'utf8mb4_turkish_ci'
   },
   EMAIL: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(100), // Increased from 50 to 100 for Turkish emails
     allowNull: true,
     validate: {
       isEmail: true
-    }
+    },
+    charset: 'utf8mb4',
+    collate: 'utf8mb4_turkish_ci'
   },
 
   PASSWORD: {

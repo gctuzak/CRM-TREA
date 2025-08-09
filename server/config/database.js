@@ -26,7 +26,8 @@ const sequelize = new Sequelize({
   
   // MySQL specific options
   dialectOptions: {
-    charset: 'utf8mb4'
+    charset: 'utf8mb4',
+    collate: 'utf8mb4_turkish_ci'
   },
   
   // Define options for all models
