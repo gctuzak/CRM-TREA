@@ -81,6 +81,10 @@ jspm_packages/
 *.sqlite
 *.db
 mydatabase_backup*.sql
+server/debug_backup_fixed.sql
+server/mysql8_ready.sql
+server/debug_backup.js
+server/mydatabase_backup*.sql
 
 # IDE files
 .vscode/
