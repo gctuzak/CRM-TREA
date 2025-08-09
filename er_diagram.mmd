@@ -1,0 +1,585 @@
+erDiagram
+    CONTACT {
+        int ID PK
+        varchar NAME
+        varchar CONTROLNAME
+        set TYPE
+        varchar TITLE
+        varchar JOBTITLE
+        varchar ADDRESS
+        varchar CITY
+        char STATE
+        char COUNTRY
+        varchar ZIP
+        int PARENTCONTACTID FK
+        varchar PARENTCONTACTNAME
+        text NOTE
+        int ORGANIZATIONTYPEID FK
+        int ORID PK
+        int USERID FK
+        datetime DATETIME
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        varchar GOOGLEID
+        varchar POSITION
+        varchar COORDINATE
+        timestamp STAMP
+    }
+    
+    CONTACTEMAIL {
+        int ID PK
+        int CONTACTID FK
+        varchar EMAIL
+        int ORID PK
+        int USERID FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    CONTACTPHONE {
+        int ID PK
+        int CONTACTID FK
+        varchar NUMBER
+        varchar CONTROLNUMBER
+        varchar TYPE
+        int ORID PK
+        int USERID FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    CONTACTFIELD {
+        int ID PK
+        varchar NAME
+        varchar UNIT
+        varchar TYPE
+        int ORID PK
+        int RANK
+        int MULTI
+        int MANDA
+        int SORT
+        timestamp STAMP
+    }
+    
+    CONTACTFIELDVALUE {
+        int ID PK
+        int FIELDID FK
+        int CONTACTID FK
+        varchar VALUE
+        int ORID PK
+        int USERID FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    CONTACTFIELDPRESET {
+        int ID PK
+        int CONTACTFIELDID FK
+        varchar VALUE
+        int ORID PK
+        timestamp STAMP
+    }
+    
+    ORGANIZATIONTYPE {
+        int ID PK
+        varchar NAME
+        int ORID PK
+        varchar TYPE
+        timestamp STAMP
+    }
+    
+    USER {
+        int ID PK
+        varchar NAME
+        varchar EMAIL
+        varchar PSW
+        varchar KEYP
+        varchar PERMISSION
+        varchar CALENDARFILTER
+        varchar ORGANIZATION
+        int ORID PK
+        int CONTACTID FK
+        varchar CLIENTHR
+        varchar COUNTRY
+        varchar SITE
+        datetime DATETIMESIGNUP
+        datetime DATETIMESYNC
+        varchar TOKEN1
+        varchar TOKEN2
+        varchar TASKALERT
+        varchar TASKALERT2
+        varchar TASKALERT3
+        varchar TASKALERT4
+        varchar TASKALERT5
+        varchar DBNO
+        varchar LOGO
+        varchar IPNO
+        varchar MENU
+        varchar MENUORDER
+        varchar INDUSTRY
+        varchar CALLTASK
+        varchar CALLMETHOD
+        varchar CALLNUMBER
+        varchar CALLNUMBER2
+        varchar CALLNUMBER3
+        varchar CALLNUMBER4
+        varchar CALLNUMBER5
+        varchar CALLNUMBER6
+        varchar CALLNUMBER7
+        varchar CALLNUMBER8
+        varchar CALLNUMBER9
+        varchar CALLNUMBER10
+        varchar CALLNUMBER11
+        varchar CALLNUMBER12
+        varchar CALLNUMBER13
+        varchar CALLNUMBER14
+        varchar CALLNUMBER15
+        varchar CALLNUMBER16
+        varchar CALLNUMBER17
+        varchar CALLNUMBER18
+        varchar CALLNUMBER19
+        varchar CALLNUMBER20
+        varchar CALLNUMBER21
+        varchar CALLNUMBER22
+        varchar CALLNUMBER23
+        varchar CALLNUMBER24
+        varchar CALLNUMBER25
+        varchar CALLNUMBER26
+        varchar CALLNUMBER27
+        varchar CALLNUMBER28
+        varchar CALLNUMBER29
+        varchar CALLNUMBER30
+        varchar CALLNUMBER31
+        varchar CALLNUMBER32
+        varchar CALLNUMBER33
+        varchar CALLNUMBER34
+        varchar CALLNUMBER35
+        varchar CALLNUMBER36
+        varchar CALLNUMBER37
+        varchar CALLNUMBER38
+        varchar CALLNUMBER39
+        varchar CALLNUMBER40
+        varchar CALLNUMBER41
+        varchar CALLNUMBER42
+        varchar CALLNUMBER43
+        varchar CALLNUMBER44
+        varchar CALLNUMBER45
+        varchar CALLNUMBER46
+        varchar CALLNUMBER47
+        varchar CALLNUMBER48
+        varchar CALLNUMBER49
+        varchar CALLNUMBER50
+        varchar CALLNUMBER51
+        varchar CALLNUMBER52
+        varchar CALLNUMBER53
+        varchar CALLNUMBER54
+        varchar CALLNUMBER55
+        varchar CALLNUMBER56
+        varchar CALLNUMBER57
+        varchar CALLNUMBER58
+        varchar CALLNUMBER59
+        varchar CALLNUMBER60
+        varchar CALLNUMBER61
+        varchar CALLNUMBER62
+        varchar CALLNUMBER63
+        varchar CALLNUMBER64
+        varchar CALLNUMBER65
+        varchar CALLNUMBER66
+        varchar CALLNUMBER67
+        varchar CALLNUMBER68
+        varchar CALLNUMBER69
+        varchar CALLNUMBER70
+        varchar CALLNUMBER71
+        varchar CALLNUMBER72
+        varchar CALLNUMBER73
+        varchar CALLNUMBER74
+        varchar CALLNUMBER75
+        varchar CALLNUMBER76
+        varchar CALLNUMBER77
+        varchar CALLNUMBER78
+        varchar CALLNUMBER79
+        varchar CALLNUMBER80
+        varchar CALLNUMBER81
+        varchar CALLNUMBER82
+        varchar CALLNUMBER83
+        varchar CALLNUMBER84
+        varchar CALLNUMBER85
+        varchar CALLNUMBER86
+        varchar CALLNUMBER87
+        varchar CALLNUMBER88
+        varchar CALLNUMBER89
+        varchar CALLNUMBER90
+        varchar CALLNUMBER91
+        varchar CALLNUMBER92
+        varchar CALLNUMBER93
+        varchar CALLNUMBER94
+        varchar CALLNUMBER95
+        varchar CALLNUMBER96
+        varchar CALLNUMBER97
+        varchar CALLNUMBER98
+        varchar CALLNUMBER99
+        varchar CALLNUMBER100
+        timestamp STAMP
+    }
+    
+    USEREMAIL {
+        int ID PK
+        int USERID FK
+        varchar EMAIL
+        int ORID PK
+        timestamp STAMP
+    }
+    
+    USERCODES {
+        int ID PK
+        int USERID FK
+        varchar CODE
+        varchar TYPE
+        int ORID PK
+        timestamp STAMP
+    }
+    
+    DEPARTMENT {
+        int ID PK
+        int ORID PK
+        varchar NAME
+        timestamp STAMP
+    }
+    
+    TASK {
+        int ID PK
+        int USERID FK
+        datetime DATETIME
+        datetime DATETIMEDUE
+        text NOTE
+        varchar STATUS
+        int TYPEID FK
+        int CONTACTID FK
+        int OPPORTUNITYID FK
+        int LEADID FK
+        int JOBID FK
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        int PARENTTASKID FK
+        varchar RECUR
+        datetime RECURDUEDATE
+        varchar GOOGLETASKID
+        timestamp STAMP
+    }
+    
+    TASKTYPE {
+        int ID PK
+        varchar NAME
+        int ORID PK
+        timestamp STAMP
+    }
+    
+    TASKUSER {
+        int ID PK
+        int TASKID FK
+        int USERID FK
+        int ORID PK
+        int USERIDEDIT FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    TASKARCHIVE {
+        int ID PK
+        int USERID FK
+        datetime DATETIME
+        datetime DATETIMEDUE
+        text NOTE
+        varchar STATUS
+        int TYPEID FK
+        int CONTACTID FK
+        int OPPORTUNITYID FK
+        int LEADID FK
+        int JOBID FK
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        int FOLLOWID FK
+        int PARENTTASKID FK
+        varchar RECUR
+        datetime RECURDUEDATE
+        varchar GOOGLETASKID
+        timestamp STAMP
+    }
+    
+    TASKUSERARCHIVE {
+        int ID PK
+        int TASKID FK
+        int USERID FK
+        int ORID PK
+        int USERIDEDIT FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    EVENT {
+        int ID PK
+        int USERID FK
+        datetime DATETIME
+        datetime DATETIMEDUE
+        datetime DATETIMEEND
+        text NOTE
+        text NOTE2
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        varchar GOOGLEEVENTID
+        int PARENTID FK
+        timestamp STAMP
+    }
+    
+    EVENTGUEST {
+        int ID PK
+        int EVENTID FK
+        int GUESTID FK
+        int ORID PK
+        varchar TYPE
+        int USERIDEDIT FK
+        datetime DATETIMEEDIT
+        timestamp STAMP
+    }
+    
+    OPPORTUNITY {
+        int ID PK
+        varchar NAME
+        text NOTE
+        int CONTACTID FK
+        int CLIENTID FK
+        int STATUSTYPEID FK
+        int OWNERUSERID FK
+        int USERID FK
+        datetime DATETIME
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        int LEADID FK
+        decimal USDRATE
+        decimal EURRATE
+        decimal DISCOUNTPER
+        decimal DISCOUNTAMN
+        decimal SUBTOTAL
+        decimal TOTALCOST
+        decimal FINALTOTAL
+        varchar CURRENCY
+        decimal VATPER1
+        decimal VATVALUE1
+        decimal VATPER2
+        decimal VATVALUE2
+        decimal VATPER3
+        decimal VATVALUE3
+        varchar VATINCLUDE
+        timestamp STAMP
+    }
+    
+    OPPORTUNITYPRODUCT {
+        int ID PK
+        int ORID PK
+        int PRODUCTID FK
+        int OPPID FK
+        decimal AMOUNT
+        decimal PRICE
+        decimal UNITPRICE
+        decimal UNITCOST
+        decimal DISCOUNT
+        varchar CURRENCY
+        varchar UPCURRENCY
+        text DESCRIPTION
+        decimal VATPER
+        varchar LISTNAME
+        text DETAILS
+        varchar EXTENSION
+        int PURCHID FK
+        timestamp STAMP
+    }
+    
+    LEAD {
+        int ID PK
+        varchar NAME
+        text NOTE
+        int CONTACTID FK
+        int CLIENTID FK
+        int STATUSTYPEID FK
+        int OWNERUSERID FK
+        int USERID FK
+        datetime DATETIME
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        timestamp STAMP
+    }
+    
+    JOB {
+        int ID PK
+        int OPPORTUNITYID FK
+        int LEADID FK
+        varchar NAME
+        int OWNERUSERID FK
+        int CONTACTID FK
+        int CLIENTID FK
+        text NOTE
+        datetime DATETIME
+        int USERID FK
+        int ORID PK
+        datetime DATETIMEEDIT
+        int USERIDEDIT FK
+        int STATUSTYPEID FK
+        timestamp STAMP
+    }
+    
+    STATUSTYPE {
+        int ID PK
+        varchar NAME
+        int ORID PK
+        varchar TYPE
+        timestamp STAMP
+    }
+    
+    JOBSTATUSTYPE {
+        int ID PK
+        varchar NAME
+        int ORID PK
+        timestamp STAMP
+    }
+    
+    PRICELIST {
+        int ID PK
+        int ORID PK
+        varchar NAME
+        varchar DEF
+        timestamp STAMP
+    }
+    
+    PRICELISTDETAIL {
+        int ID PK
+        decimal PRICE
+        decimal COST
+        varchar CURRENCY
+        decimal VAT
+        int PRODUCTID FK
+        text DESCRIPTION
+        int ORID PK
+        int PRICELISTID FK
+        int IMAGEID FK
+        varchar UNIT
+        varchar NET
+        datetime DATETIMEEDIT
+        int PURCHID FK
+        timestamp STAMP
+    }
+    
+    PRICEDISCOUNT {
+        int ID PK
+        int ORID PK
+        int PRODUCTID FK
+        int PRICELISTID FK
+        decimal RATE
+        int SOURCEID FK
+        timestamp STAMP
+    }
+    
+    REPORT {
+        int ID PK
+        varchar NAME
+        varchar CATEGORY
+        text QUERY
+        text FILTER
+        text SEL
+        int ORID PK
+        int USERID FK
+        datetime DATETIME
+        timestamp STAMP
+    }
+    
+    FILTER {
+        int ID
+        int ORID
+        varchar NAME
+        varchar CATEGORY
+        text FIELDS
+        text CONDITION
+        varchar PERM
+        datetime DATETIME
+        timestamp STAMP
+    }
+    
+    LOGIN_HISTORY {
+        int ID PK
+        varchar LOGIN_ID
+        varchar SESSION_ID
+        varchar IP
+        datetime LOGIN_DATE_TIME
+        datetime LOGOUT_DATE_TIME
+        int LOGIN_DURATION
+        int ORID PK
+        varchar DEVICE
+        int CONTACTID FK
+        timestamp STAMP
+    }
+    
+    %% İlişkiler
+    CONTACT ||--o{ CONTACTEMAIL : "has"
+    CONTACT ||--o{ CONTACTPHONE : "has"
+    CONTACT ||--o{ CONTACTFIELDVALUE : "has"
+    CONTACT ||--o{ TASK : "assigned_to"
+    CONTACT ||--o{ OPPORTUNITY : "related_to"
+    CONTACT ||--o{ LEAD : "related_to"
+    CONTACT ||--o{ JOB : "related_to"
+    CONTACT ||--o{ EVENT : "participates_in"
+    CONTACT ||--o{ LOGIN_HISTORY : "logs_in"
+    CONTACT ||--o{ USER : "is_user"
+    
+    CONTACTFIELD ||--o{ CONTACTFIELDVALUE : "has_value"
+    CONTACTFIELD ||--o{ CONTACTFIELDPRESET : "has_preset"
+    
+    ORGANIZATIONTYPE ||--o{ CONTACT : "categorizes"
+    
+    USER ||--o{ TASK : "creates"
+    USER ||--o{ TASK : "edits"
+    USER ||--o{ TASKUSER : "assigned_to"
+    USER ||--o{ EVENT : "creates"
+    USER ||--o{ OPPORTUNITY : "owns"
+    USER ||--o{ OPPORTUNITY : "creates"
+    USER ||--o{ LEAD : "owns"
+    USER ||--o{ LEAD : "creates"
+    USER ||--o{ JOB : "owns"
+    USER ||--o{ JOB : "creates"
+    USER ||--o{ USEREMAIL : "has"
+    USER ||--o{ USERCODES : "has"
+    USER ||--o{ REPORT : "creates"
+    
+    TASKTYPE ||--o{ TASK : "categorizes"
+    TASKTYPE ||--o{ TASKARCHIVE : "categorizes"
+    
+    TASK ||--o{ TASKUSER : "assigned_to"
+    TASK ||--o{ TASK : "parent_of"
+    
+    EVENT ||--o{ EVENTGUEST : "has_guest"
+    EVENT ||--o{ EVENT : "parent_of"
+    
+    OPPORTUNITY ||--o{ OPPORTUNITYPRODUCT : "contains"
+    OPPORTUNITY ||--o{ TASK : "generates"
+    OPPORTUNITY ||--o{ JOB : "generates"
+    
+    LEAD ||--o{ OPPORTUNITY : "converts_to"
+    LEAD ||--o{ TASK : "generates"
+    LEAD ||--o{ JOB : "generates"
+    
+    JOB ||--o{ TASK : "generates"
+    
+    STATUSTYPE ||--o{ OPPORTUNITY : "status"
+    STATUSTYPE ||--o{ LEAD : "status"
+    
+    JOBSTATUSTYPE ||--o{ JOB : "status"
+    
+    PRICELIST ||--o{ PRICELISTDETAIL : "contains"
+    PRICELIST ||--o{ PRICEDISCOUNT : "applies_to"
+    
+    PRICELISTDETAIL ||--o{ OPPORTUNITYPRODUCT : "references"
+    PRICELISTDETAIL ||--o{ PRICEDISCOUNT : "discounted"
+
