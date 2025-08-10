@@ -3,6 +3,7 @@ const { sequelize } = require('../config/database');
 // Ensure related models are available for includes used below
 const ContactEmail = require('./ContactEmail');
 const ContactPhone = require('./ContactPhone');
+const ContactFieldValue = require('./ContactFieldValue');
 
 const Contact = sequelize.define('CONTACT', {
   ID: {
@@ -389,17 +390,28 @@ Contact.getWithRelatedData = async function(contactId) {
       attributes: ['ID', 'NUMBER', 'CONTROLNUMBER', 'TYPE', 'CONTACTID', 'ORID', 'USERID']
     });
     
-    // Custom field değerlerini çek (TC Kimlik No, Vergi No, Vergi Dairesi)
-    const customFields = await ContactFieldValue.findAll({
-      where: {
-        CONTACTID: contactId,
-        ORID: contact.ORID,
-        FIELDID: [28, 29, 30] // 28: Vergi No, 29: Vergi Dairesi, 30: TC Kimlik No
-      },
-      attributes: ['FIELDID', 'VALUE']
-    });
+    // Tüm custom field değerlerini çek
+    const ContactField = require('./ContactField');
+    console.log('Fetching custom fields for contactId:', contactId);
     
-    // Custom field değerlerini organize et
+    // Raw query kullanarak test et
+    const [customFieldsRaw] = await sequelize.query(
+      'SELECT ID, CONTACTID, FIELDID, VALUE FROM CONTACTFIELDVALUE WHERE CONTACTID = ?',
+      { replacements: [contactId] }
+    );
+    console.log('Raw query found custom fields:', customFieldsRaw.length);
+    
+    const customFields = customFieldsRaw;
+     console.log('Found custom fields:', customFields.length);
+    
+    // Field bilgilerini ayrı ayrı çek
+    for (let i = 0; i < customFields.length; i++) {
+      const fieldInfo = await ContactField.findByPk(customFields[i].FIELDID);
+      customFields[i].field = fieldInfo;
+    }
+    console.log('Custom fields with field info:', customFields.length);
+    
+    // Özel alanları organize et (eski format için backward compatibility)
     const fieldValues = {};
     customFields.forEach(field => {
       switch(field.FIELDID) {
@@ -425,7 +437,8 @@ Contact.getWithRelatedData = async function(contactId) {
         ...fieldValues
       },
       emails: emails || [],
-      phones: phones || []
+      phones: phones || [],
+      customFields: customFields || []
     };
     
     console.log('Returning result with emails:', result.emails.length, 'phones:', result.phones.length);

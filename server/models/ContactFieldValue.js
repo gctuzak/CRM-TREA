@@ -42,4 +42,12 @@ const ContactFieldValue = sequelize.define('CONTACTFIELDVALUE', {
   timestamps: false
 });
 
+// Association tanımlaması
+ContactFieldValue.associate = function(models) {
+  ContactFieldValue.belongsTo(models.ContactField, {
+    foreignKey: 'FIELDID',
+    as: 'field'
+  });
+};
+
 module.exports = ContactFieldValue;

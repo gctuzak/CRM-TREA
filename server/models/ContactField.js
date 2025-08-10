@@ -8,15 +8,15 @@ const ContactField = sequelize.define('CONTACTFIELD', {
     autoIncrement: true
   },
   NAME: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(40),
+    allowNull: false
+  },
+  UNIT: {
+    type: DataTypes.STRING(40),
     allowNull: false
   },
   TYPE: {
-    type: DataTypes.STRING(10),
-    allowNull: false
-  },
-  CATEGORY: {
-    type: DataTypes.STRING(2),
+    type: DataTypes.STRING(5),
     allowNull: false
   },
   ORID: {
@@ -24,23 +24,23 @@ const ContactField = sequelize.define('CONTACTFIELD', {
     primaryKey: true,
     allowNull: false
   },
-  ORDERID: {
+  RANK: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
   },
-  REQUIRED: {
+  MULTI: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
   },
-  READONLY: {
-    type: DataTypes.INTEGER,
+  MANDA: {
+    type: DataTypes.TINYINT,
     allowNull: false,
     defaultValue: 0
   },
-  HIDDEN: {
-    type: DataTypes.INTEGER,
+  SORT: {
+    type: DataTypes.TINYINT,
     allowNull: false,
     defaultValue: 0
   },
@@ -52,5 +52,13 @@ const ContactField = sequelize.define('CONTACTFIELD', {
   tableName: 'CONTACTFIELD',
   timestamps: false
 });
+
+// Association tanımlaması
+ContactField.associate = function(models) {
+  ContactField.hasMany(models.ContactFieldValue, {
+    foreignKey: 'FIELDID',
+    as: 'values'
+  });
+};
 
 module.exports = ContactField;

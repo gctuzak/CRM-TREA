@@ -28,6 +28,20 @@ interface Contact {
   TAXOFFICE?: string;
   emails?: ContactEmail[];
   phones?: ContactPhone[];
+  customFields?: ContactCustomField[];
+}
+
+interface ContactCustomField {
+  ID: number;
+  CONTACTID: number;
+  FIELDID: number;
+  VALUE: string;
+  field?: {
+    ID: number;
+    NAME: string;
+    UNIT: string;
+    TYPE: string;
+  };
 }
 
 interface ContactEmail {
@@ -240,10 +254,27 @@ export default function Contacts() {
     }
   };
 
-  const handleContactClick = (contact: Contact) => {
-    setSelectedContact(contact);
-    setShowDetailModal(true);
-    setIsEditing(false);
+  const handleContactClick = async (contact: Contact) => {
+    try {
+      // Fetch detailed contact data including custom fields
+      const detailedContact = await api.get(`/api/contacts/${contact.ID}`);
+      console.log('API Response:', detailedContact);
+      console.log('Custom Fields:', detailedContact.customFields);
+      setSelectedContact({
+        ...detailedContact.contact,
+        emails: detailedContact.emails,
+        phones: detailedContact.phones,
+        customFields: detailedContact.customFields
+      });
+      setShowDetailModal(true);
+      setIsEditing(false);
+    } catch (err) {
+      const errorMessage = err instanceof ApiError 
+        ? err.message 
+        : 'Kişi detayları yüklenirken hata oluştu';
+      setError(errorMessage);
+      showToast.error(errorMessage);
+    }
   };
 
   const handleEditContact = () => {
@@ -327,7 +358,8 @@ export default function Contacts() {
         setSelectedContact({
           ...updatedContact.contact,
           emails: updatedContact.emails,
-          phones: updatedContact.phones
+          phones: updatedContact.phones,
+          customFields: updatedContact.customFields
         });
         // Refresh the list
         setCurrentPage(1);
@@ -1054,6 +1086,23 @@ export default function Contacts() {
                     <div>
                       <h3 className="text-lg font-semibold mb-3">Notlar</h3>
                       <p className="text-gray-900 bg-gray-50 p-3 rounded-md">{selectedContact.NOTE}</p>
+                    </div>
+                  )}
+
+                  {/* Custom Fields */}
+                  {selectedContact.customFields && selectedContact.customFields.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">Özel Alanlar</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {selectedContact.customFields.map((customField, index) => (
+                          <div key={index}>
+                            <span className="text-sm font-medium text-gray-500">
+                              {customField.field?.UNIT || customField.field?.NAME || `Alan ${customField.FIELDID}`}:
+                            </span>
+                            <p className="text-gray-900">{customField.VALUE || '-'}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
 
