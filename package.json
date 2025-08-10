@@ -1,6 +1,6 @@
 {
   "name": "item-crm",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Modern CRM application with existing MySQL database integration",
   "main": "server/index.js",
   "scripts": {
@@ -13,10 +13,19 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down"
   },
-  "keywords": ["crm", "mysql", "nextjs", "nodejs", "express"],
+  "keywords": [
+    "crm",
+    "mysql",
+    "nextjs",
+    "nodejs",
+    "express"
+  ],
   "author": "TREA CRM Team",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
   }
 }

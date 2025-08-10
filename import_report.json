@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-08-10T07:57:32.207Z",
+  "totalRecords": 3683,
+  "successCount": 3678,
+  "errorCount": 5,
+  "customFields": [
+    "İlişki Türü",
+    "Kişi/Kurum Türü",
+    "İlçe/Bölge",
+    "Sayfa Linki",
+    "Kayıt ID",
+    "Müşteri Temsilcisi",
+    "Web Sayfası",
+    "Yetkili",
+    "Son Düzenleyen",
+    "Kaydı Giren"
+  ],
+  "summary": "Excel verileri başarıyla veritabanına aktarıldı. Excel verileri en güncel kabul edilerek mevcut veriler güncellendi."
+}

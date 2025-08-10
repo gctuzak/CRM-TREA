@@ -640,8 +640,8 @@ export default function Tasks() {
                         <p className="text-gray-900">{selectedTask.OPPORTUNITYID || '-'}</p>
                       </div>
                       <div>
-                        <span className="text-sm font-medium text-gray-500">Kullanıcı ID:</span>
-                        <p className="text-gray-900">{selectedTask.USERID}</p>
+                        <span className="text-sm font-medium text-gray-500">Müşteri Temsilcisi:</span>
+                        <p className="text-gray-900">{selectedTask.user?.NAME || `ID: ${selectedTask.USERID}`}</p>
                       </div>
                     </div>
                   </div>

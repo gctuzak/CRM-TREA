@@ -1,0 +1,19 @@
+{
+  "totalExcelTaxRecords": 0,
+  "totalComparisons": 0,
+  "updatesNeeded": 0,
+  "updatesApplied": 0,
+  "insertsApplied": 0,
+  "finalStats": {
+    "TOTAL_COMPANIES": 1484,
+    "COMPLETE_TAX_INFO": 232,
+    "TAX_NUMBER_COUNT": 234,
+    "TAX_OFFICE_COUNT": 234,
+    "TC_KIMLIK_COUNT": 6
+  },
+  "improvement": {
+    "previous": 232,
+    "current": 232,
+    "increase": 0
+  }
+}

@@ -47,6 +47,8 @@ export interface Contact {
   POSITION: string;
   COORDINATE: string;
   STAMP?: string;
+  emails?: ContactEmail[];
+  phones?: ContactPhone[];
 }
 
 export interface ContactEmail {
@@ -55,22 +57,27 @@ export interface ContactEmail {
   EMAIL: string;
   ORID: number;
   USERID: number;
-  DATETIME: string;
-  DATETIMEEDIT: string;
-  USERIDEDIT: number;
+  DATETIMEEDIT?: string;
   STAMP?: string;
 }
 
 export interface ContactPhone {
   ID: number;
   CONTACTID: number;
-  PHONE: string;
+  NUMBER: string;
+  CONTROLNUMBER?: string;
+  TYPE?: string;
   ORID: number;
   USERID: number;
-  DATETIME: string;
-  DATETIMEEDIT: string;
-  USERIDEDIT: number;
+  DATETIMEEDIT?: string;
   STAMP?: string;
+}
+
+export interface SearchFilters {
+  query?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
 }
 
 // Opportunity types

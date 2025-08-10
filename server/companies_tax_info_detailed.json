@@ -1,0 +1,150 @@
+{
+  "statistics": {
+    "totalTaxRecords": 100,
+    "totalContacts": 2,
+    "companiesWithTaxInfo": 0
+  },
+  "companies": [],
+  "rawTaxRecords": [
+    {
+      "id": "7322",
+      "fieldId": 29,
+      "contactId": "1669",
+      "value": "KÜÇÜKYALI",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7323",
+      "fieldId": 28,
+      "contactId": "1669",
+      "value": "70500333693",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7326",
+      "fieldId": 29,
+      "contactId": "1630",
+      "value": "KÜÇÜKYALI",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7328",
+      "fieldId": 28,
+      "contactId": "1630",
+      "value": "9520574373",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7331",
+      "fieldId": 29,
+      "contactId": "1631",
+      "value": "İKİTELLİ",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7333",
+      "fieldId": 28,
+      "contactId": "1631",
+      "value": "5740060390",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7343",
+      "fieldId": 29,
+      "contactId": "1672",
+      "value": "ŞİŞLİ",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7344",
+      "fieldId": 28,
+      "contactId": "1672",
+      "value": "15751415560",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7359",
+      "fieldId": 29,
+      "contactId": "1676",
+      "value": "SARIGAZİ",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7360",
+      "fieldId": 28,
+      "contactId": "1676",
+      "value": "9250394402",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7365",
+      "fieldId": 29,
+      "contactId": "1677",
+      "value": "SARIGAZİ",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7366",
+      "fieldId": 28,
+      "contactId": "1677",
+      "value": "7340882740",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7371",
+      "fieldId": 28,
+      "contactId": "1678",
+      "value": "51652796124",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7373",
+      "fieldId": 29,
+      "contactId": "1678",
+      "value": "YALOVA",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7375",
+      "fieldId": 28,
+      "contactId": "1679",
+      "value": "839079965",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7377",
+      "fieldId": 29,
+      "contactId": "1679",
+      "value": "ATIŞALANI",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7408",
+      "fieldId": 28,
+      "contactId": "1680",
+      "value": "1010461275",
+      "fieldName": "Vergi No"
+    },
+    {
+      "id": "7410",
+      "fieldId": 29,
+      "contactId": "1680",
+      "value": "ÜMRANİYE",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7416",
+      "fieldId": 29,
+      "contactId": "1682",
+      "value": "BÜYÜK MÜKELLEFLER",
+      "fieldName": "Vergi Dairesi"
+    },
+    {
+      "id": "7417",
+      "fieldId": 28,
+      "contactId": "1682",
+      "value": "150005369",
+      "fieldName": "Vergi No"
+    }
+  ]
+}

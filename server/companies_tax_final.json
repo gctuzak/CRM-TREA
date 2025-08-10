@@ -1,0 +1,1556 @@
+{
+  "statistics": {
+    "totalTaxRecords": 451,
+    "companiesWithTaxInfo": 221,
+    "processedCompanies": 221
+  },
+  "companies": [
+    {
+      "id": 2,
+      "name": "ACIBADEM PROJE YÖNETİMİ",
+      "type": "O",
+      "vergiNo": "0050412974",
+      "vergiDairesi": "BOĞAZİÇİ KURUMLAR"
+    },
+    {
+      "id": 5,
+      "name": "ARSHAN YAPI İNŞAAT TURİZM SAN. TİC. LTD",
+      "type": "O",
+      "vergiNo": "0800368381",
+      "vergiDairesi": "ÜMRANİYE"
+    },
+    {
+      "id": 52,
+      "name": "ALFA LAVAL MAKİNE SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "0510030345",
+      "vergiDairesi": "YENİKAPI"
+    },
+    {
+      "id": 57,
+      "name": "ARTAŞ İNŞAAT A.Ş",
+      "type": "O",
+      "vergiNo": "085 005 5513",
+      "vergiDairesi": "MARMARA KURUMLAR "
+    },
+    {
+      "id": 63,
+      "name": "GÜNEŞTEN YAPIM YONETIM TASARIM & DANIŞMANLIK",
+      "type": "O",
+      "vergiNo": "4340642364",
+      "vergiDairesi": "Davutpaşa"
+    },
+    {
+      "id": 72,
+      "name": "AŞÇIOĞLU İŞ ORTAKLIĞI",
+      "type": "O",
+      "vergiNo": "091 113 1795",
+      "vergiDairesi": "Mecidiyeköy V.D"
+    },
+    {
+      "id": 86,
+      "name": "ATAK İNŞAAT TAAHHÜT TİCARET LİMİTED ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "0940021615",
+      "vergiDairesi": "Erenköy"
+    },
+    {
+      "id": 147,
+      "name": "MAG TASARIM MİMARLIK İNŞ.EML.SAN VE TİC.LTD.ŞTİ",
+      "type": "O",
+      "vergiNo": "6100444801",
+      "vergiDairesi": "ÇORLU"
+    },
+    {
+      "id": 182,
+      "name": "KİZZE İNŞAAT MOBİLYA DEK. SAN .VE TİC. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "5640515767",
+      "vergiDairesi": "BEŞİKTAŞ"
+    },
+    {
+      "id": 187,
+      "name": "ÖRTAŞ MÜHENDİSLİK YAPI DIŞ TİCARET LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "661 039 8210",
+      "vergiDairesi": "GÜNEŞLİ"
+    },
+    {
+      "id": 215,
+      "name": "PROJE AYDINLATMA TAVAN SİSTEMLERİ İNŞ. SAN. VE TİC. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "7330435029",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 233,
+      "name": "STUDİO 13 MİMARLIK SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7810466603",
+      "vergiDairesi": "MECİDİYEKÖY"
+    },
+    {
+      "id": 245,
+      "name": "PROMET DIŞ TİCARET VE İNŞAAT A.Ş.",
+      "type": "O",
+      "vergiNo": "7330036185",
+      "vergiDairesi": "GÖZTEPE"
+    },
+    {
+      "id": 254,
+      "name": "MDS SOĞUTMA TEK.GIDA İNŞ.SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6130717123",
+      "vergiDairesi": "KAĞITHANE"
+    },
+    {
+      "id": 306,
+      "name": "GRATİS İÇ VE DIŞ TİC. AŞ.",
+      "type": "O",
+      "vergiNo": "4110356188",
+      "vergiDairesi": "BOĞAZİÇİ KURUMLAR"
+    },
+    {
+      "id": 350,
+      "name": "MİDO MİMARLIK",
+      "type": "O",
+      "vergiNo": "621 002 4312",
+      "vergiDairesi": "BEYOĞLU"
+    },
+    {
+      "id": 372,
+      "name": "CITY LIGHT",
+      "type": "O",
+      "vergiNo": "6230050969",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 394,
+      "name": "DİGİTAL PANORAMA BİLGİ VE İLETİŞİM TEK.SİS.HİZM.A.Ş.",
+      "type": "O",
+      "vergiNo": "295 043 1671",
+      "vergiDairesi": "Ümraniye"
+    },
+    {
+      "id": 499,
+      "name": "SEVEN MİMARLIK",
+      "type": "O",
+      "vergiNo": "7640099844",
+      "vergiDairesi": "BAKIRKÖY"
+    },
+    {
+      "id": 509,
+      "name": "Modüs İnş. Dek. Aks. San. Tic. ltd. sti",
+      "type": "O",
+      "vergiNo": "6220030414",
+      "vergiDairesi": "Küçükyalı v.d."
+    },
+    {
+      "id": 515,
+      "name": "OĞUZ BAYAZIT MİMARLIK",
+      "type": "O",
+      "vergiNo": "6350272366",
+      "vergiDairesi": "BEŞİKTAŞ"
+    },
+    {
+      "id": 520,
+      "name": "EALD AYDINLATMA PROJE TASARIM DANISMANLIK IMALAT SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "3231200027",
+      "vergiDairesi": "İKİTELLİ"
+    },
+    {
+      "id": 538,
+      "name": "ÇALIK İNŞAAT A.Ş.",
+      "type": "O",
+      "vergiNo": "2250550706",
+      "vergiDairesi": "ZİNCİRLİKUYU"
+    },
+    {
+      "id": 569,
+      "name": "VRM REKLAM SANAYİ VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "5920059465",
+      "vergiDairesi": "BEŞİKTAŞ"
+    },
+    {
+      "id": 628,
+      "name": "AKAS YAPI SANAYİ VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "0111158312",
+      "vergiDairesi": "ÜMRANİYE"
+    },
+    {
+      "id": 630,
+      "name": "İSTANBUL AKVARYUM TURİZM TİÇ.LTD.ŞTİ",
+      "type": "O",
+      "vergiNo": "6850302809",
+      "vergiDairesi": "AVCILAR"
+    },
+    {
+      "id": 768,
+      "name": "SANAT YAPI İNŞAAT A.Ş.",
+      "type": "O",
+      "vergiNo": "7430151343 ",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 891,
+      "name": "KALYON İNŞAAT SANAYİ VE TİCARET AŞ.",
+      "type": "O",
+      "vergiNo": "4930083621",
+      "vergiDairesi": "ANADOLU KURUMLAR"
+    },
+    {
+      "id": 896,
+      "name": "EXİMBANK TÜRKİYE İHRACAT VE KREDİ BANKASI A.Ş.",
+      "type": "O",
+      "vergiNo": "8790022987",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1296,
+      "name": "İLK İNŞAAT TAAH.SAN. VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "4730347322",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 1314,
+      "name": "EMAY MÜT. MÜH. İNŞ. LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "2110703704",
+      "vergiDairesi": "Bakırköy V.D."
+    },
+    {
+      "id": 1318,
+      "name": "PROEN MÜHENDİSLİK LİMİTED ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "3360011504",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 1344,
+      "name": "İKİZLER AYDINLATMA ARMATÜRLERİ SANAYİ VE TİCARET A.Ş",
+      "type": "O",
+      "vergiNo": "4700055392",
+      "vergiDairesi": "A. KURUMLAR"
+    },
+    {
+      "id": 1602,
+      "name": "SE CLUB",
+      "type": "O",
+      "vergiNo": " 7600456308",
+      "vergiDairesi": "Mecidiyeköy"
+    },
+    {
+      "id": 1615,
+      "name": "ACIBADEM KOZYATAĞI HASTANESİ",
+      "type": "O",
+      "vergiNo": "",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1619,
+      "name": "DEKAR YAPI VE YATIRIM A.Ş.",
+      "type": "O",
+      "vergiNo": "273 062 33 22 ",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 1625,
+      "name": "Acıbadem Bakırköy Hastanesi",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1630,
+      "name": "YETİLED AYDINLATMA SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "9520574373",
+      "vergiDairesi": "KÜÇÜKYALI"
+    },
+    {
+      "id": 1631,
+      "name": "KOÇTAŞ TEKNOLOJİ DIŞ TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "5740060390",
+      "vergiDairesi": "İKİTELLİ"
+    },
+    {
+      "id": 1639,
+      "name": "ACIBADEM MASLAK HASTANESİ",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1669,
+      "name": "UFUK ÖZSOY S.M.M.M.",
+      "type": "O",
+      "vergiNo": "70500333693",
+      "vergiDairesi": "KÜÇÜKYALI"
+    },
+    {
+      "id": 1672,
+      "name": "ENT TEKNOLOJİ HALİL İBRAHİM DAĞABAKAN",
+      "type": "O",
+      "vergiNo": "15751415560",
+      "vergiDairesi": "ŞİŞLİ"
+    },
+    {
+      "id": 1676,
+      "name": "VİZYON REKLAM DİJİTAL BASKI SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "9250394402",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1677,
+      "name": "RASYONEL DİJİTAL BASKI VE DIŞ TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7340882740",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1678,
+      "name": "2A YAPI VE DEKORASYON ARİF ATALAY",
+      "type": "O",
+      "vergiNo": "51652796124",
+      "vergiDairesi": "YALOVA"
+    },
+    {
+      "id": 1679,
+      "name": "ASYA AMBALAJ & MATBAACILIK ALİ TEMUR",
+      "type": "O",
+      "vergiNo": "839079965",
+      "vergiDairesi": "ATIŞALANI"
+    },
+    {
+      "id": 1680,
+      "name": "ATILIM-TEK ISITMA SOĞUTMA KLİMA SİS.TURİZM SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "1010461275",
+      "vergiDairesi": "ÜMRANİYE"
+    },
+    {
+      "id": 1682,
+      "name": "BAUHAUS İNŞ. MALZEME VE EV GEREÇLERİ LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "150005369",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1683,
+      "name": "BEST ELEKTRİK MALZ.SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "1660027195",
+      "vergiDairesi": "GALATA"
+    },
+    {
+      "id": 1684,
+      "name": "BİMEKS BİLGİ İŞLEM VE DIŞ TİC.A.Ş.",
+      "type": "O",
+      "vergiNo": "175 006 91 33",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1686,
+      "name": "BMB SU ARITMA VE TEKN. ÜRÜNLER TİC. A.Ş.",
+      "type": "O",
+      "vergiNo": "178 076 4258",
+      "vergiDairesi": "GAZİEMİR"
+    },
+    {
+      "id": 1689,
+      "name": "BORUSAN LOJİSTİK DAĞITIM DEPOLAMA TAŞIMACILIK VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "1800038254",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1690,
+      "name": "DİJİTAL OFSET - ALİ SİNAN KARHAN YARATICI REKLAM TASARIM VE ÜRETİM STÜDYOSU",
+      "type": "O",
+      "vergiNo": "2602 0873 974",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 1691,
+      "name": "ANKARA ERAY REKLAM VE YAPI MALZ.İNŞ.TUR.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "734 009 6490",
+      "vergiDairesi": "ULUS"
+    },
+    {
+      "id": 1692,
+      "name": "ESE REKLAM SAN. TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "377 046 3039",
+      "vergiDairesi": "GÜNEŞLİ"
+    },
+    {
+      "id": 1693,
+      "name": "FCM ELEKTRİK ELEKTRONİK SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "3850362226",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1694,
+      "name": "FERMAKSAN MAKİNA SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "3850106932",
+      "vergiDairesi": "HALKALI"
+    },
+    {
+      "id": 1695,
+      "name": "FORM ABC MATBAACILIK VE REK.HİZM.SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6110008467",
+      "vergiDairesi": "KADIKÖY"
+    },
+    {
+      "id": 1696,
+      "name": "ATLAS GRUP GÜMRÜK MÜŞAVİRLİĞİ HİZ.A.Ş",
+      "type": "O",
+      "vergiNo": "1020427100",
+      "vergiDairesi": "ŞİŞLİ"
+    },
+    {
+      "id": 1697,
+      "name": "ISISAN PLASTİK AHŞAP KAPI PEN.DOĞ.FİT.İM.TOP.PAZ.ÖMER KIRIK",
+      "type": "O",
+      "vergiNo": "10142039066",
+      "vergiDairesi": "M.KARAGÜZEL"
+    },
+    {
+      "id": 1698,
+      "name": "LİON TEKSTİL SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "609 000 7656",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1701,
+      "name": "MEF METAL VE REKLAM ÜRÜNLERİ SAN. VE TİC. AŞ.",
+      "type": "O",
+      "vergiNo": "6130833361",
+      "vergiDairesi": "KÜÇÜKYALI"
+    },
+    {
+      "id": 1702,
+      "name": "MERTSAN REKLAM TANITIM İTH.İHR.SAN VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6190533679",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1703,
+      "name": "MNG KARGO YURTİÇİ VE YURTDIŞI TAŞIMACILIK A.Ş",
+      "type": "O",
+      "vergiNo": "6220344220",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1705,
+      "name": "MORPLEKS REKLAMCILIK SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6220462418",
+      "vergiDairesi": "TUNA"
+    },
+    {
+      "id": 1706,
+      "name": "MULTİNET KURUMSAL HİZMETLER A.Ş.",
+      "type": "O",
+      "vergiNo": "6230090752",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1707,
+      "name": "PETROL OFİSİ AŞ.",
+      "type": "O",
+      "vergiNo": "7290015043",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1709,
+      "name": "PRESTİJ ALÜMİNYUM VE PLASTİK SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7330100579",
+      "vergiDairesi": "PENDİK"
+    },
+    {
+      "id": 1711,
+      "name": "SELECTRON ELEKTROKİMYA SAN. TİC. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "760 000 2714",
+      "vergiDairesi": "MARMARA KURUMALR"
+    },
+    {
+      "id": 1713,
+      "name": "TNT INTERNATIONAL EXPRES TAŞIMACILIK TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "8450037082",
+      "vergiDairesi": "BÜYÜKMÜKELLEFLER"
+    },
+    {
+      "id": 1714,
+      "name": "AEROTEK BİLİŞİM TAAH.SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "0080553993",
+      "vergiDairesi": "TEPECİK"
+    },
+    {
+      "id": 1716,
+      "name": "UPS- ÜNSPED PAKET SERVİSİ SAN. VE TİD.AŞ.",
+      "type": "O",
+      "vergiNo": "9170014856",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1717,
+      "name": "VERİMOR TELEKOMÜNİKASYON A.Ş.",
+      "type": "O",
+      "vergiNo": "924 048 4753",
+      "vergiDairesi": "GAZİOSMANPAŞA "
+    },
+    {
+      "id": 1720,
+      "name": "WMA TANITIM PROMOSYON PAZARLAMA LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "8140495748",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 1722,
+      "name": "YENİBİRİŞ İNSAN KAYNAKLARI HİZ.DAN.VE YAY. AŞ.",
+      "type": "O",
+      "vergiNo": "3250050718",
+      "vergiDairesi": "ATIŞALANI"
+    },
+    {
+      "id": 1724,
+      "name": "YORUM İÇ VE DIŞ TİCARET LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "982 004 1326",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 1726,
+      "name": "REİSOĞLU DEMİR DOĞRAMA ERGİN KESLER",
+      "type": "O",
+      "vergiNo": "14990860018",
+      "vergiDairesi": "GÜNGÖREN"
+    },
+    {
+      "id": 1729,
+      "name": "PRONET GÜVENLİK HİZMETLERİ A.Ş.",
+      "type": "O",
+      "vergiNo": "7330372688",
+      "vergiDairesi": "BOĞAZİÇİ KURUMLAR"
+    },
+    {
+      "id": 1731,
+      "name": "SATKO TEKNOLOJİ SİSTEMLERİ SAN.VE TİCARET A.Ş.",
+      "type": "O",
+      "vergiNo": "7520320421",
+      "vergiDairesi": "ZİNCİRLİKUYU"
+    },
+    {
+      "id": 1734,
+      "name": "ÇAĞDAŞ ÇERVRE İLKYARDIM EĞİTİMİ VE SAĞLIK HİZ.SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "2170420274",
+      "vergiDairesi": "PENDİK"
+    },
+    {
+      "id": 1736,
+      "name": "ÖZÖN PETROL ÜRÜN. OTO.NAK.İNŞ.TİC.SAN.TAAH.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7040017677",
+      "vergiDairesi": "SULTANBEYLİ"
+    },
+    {
+      "id": 1738,
+      "name": "OTOKOÇ OTOMOTİV TİC.VE SAN.A.Ş.",
+      "type": "O",
+      "vergiNo": "6490193531",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1740,
+      "name": "BENART SES IŞIK GÖRÜNTÜ VE SAHNE SİSTEMLERİ SAN. VE TİC. LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "1630130406",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 1742,
+      "name": "TALİP OTOMOTİV BİLGİSAYAR İLETİŞİM ELEKT. SAN. VE TCİ.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "8160055599",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 1744,
+      "name": "NİSAN REKLAM MEDYA HİZMETLERİ TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6310456115",
+      "vergiDairesi": "KADIKÖY"
+    },
+    {
+      "id": 1745,
+      "name": "ACIBADEM ALTUNİZADE HASTANESİ",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1758,
+      "name": "Moda Deniz Kulübü",
+      "type": "O",
+      "vergiNo": "622 002 1238",
+      "vergiDairesi": "KADIKÖY"
+    },
+    {
+      "id": 1769,
+      "name": "ACIBADEM FULYA HASTANESİ",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1771,
+      "name": "ACIBADEM ATAKENT HASTANESİ",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 1863,
+      "name": "Özkon Yapı İnş. Makina Asansör ve Doğalgaz Sis. LTD. ŞTİ",
+      "type": "O",
+      "vergiNo": "700 007 4860",
+      "vergiDairesi": "Karaman"
+    },
+    {
+      "id": 1924,
+      "name": "AKTİF DEKORASYON YAPI MALZ. İNŞ. SAN. TİC.LTD.ŞTİ",
+      "type": "O",
+      "vergiNo": "0420347639",
+      "vergiDairesi": "GAZİKENT"
+    },
+    {
+      "id": 1927,
+      "name": "DERYA PEN DOĞRAMA SAN.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "2930133214",
+      "vergiDairesi": "MARMARA KURUMLAR"
+    },
+    {
+      "id": 1928,
+      "name": "URLU SAĞLIK HİZMETLERİ VE TİC. A.Ş.",
+      "type": "O",
+      "vergiNo": "894 004 6700",
+      "vergiDairesi": "MARMARA KURUMLAR"
+    },
+    {
+      "id": 1929,
+      "name": "GELİBOLU İNŞAAT DEKORASYON CANAN BIYIKLI",
+      "type": "O",
+      "vergiNo": "1785 1752 972",
+      "vergiDairesi": ""
+    },
+    {
+      "id": 1931,
+      "name": "YÜCER SIHHİ TESİSAT LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "9920227292",
+      "vergiDairesi": "BAKIRKÖY"
+    },
+    {
+      "id": 1933,
+      "name": "GÜRKAN GİRGİNER",
+      "type": "O",
+      "vergiNo": "11417801890",
+      "vergiDairesi": "BAKIRKÖY"
+    },
+    {
+      "id": 1936,
+      "name": "SMARTİSTANBUL ELK.MEK.SAN.VE DIŞ TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7720595713",
+      "vergiDairesi": "GÖZTEPE"
+    },
+    {
+      "id": 1938,
+      "name": "NABİLA TURİZM LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6270399539",
+      "vergiDairesi": "YENİBOSNA"
+    },
+    {
+      "id": 1939,
+      "name": "NUR İNŞAAT / FATİH SANIOĞLU",
+      "type": "O",
+      "vergiNo": "32308401708",
+      "vergiDairesi": "BEYLİKDÜZÜ"
+    },
+    {
+      "id": 1941,
+      "name": "İNART OFİS DEKORASYON LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "4760118921",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 1943,
+      "name": "TEK DEKORASYON ÇELİK EŞYA SAN. VE DIŞ TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "8330314447",
+      "vergiDairesi": "DAVUTPAŞA"
+    },
+    {
+      "id": 1945,
+      "name": "STAR GROUP VE ADİ ORTAKLIĞI",
+      "type": "O",
+      "vergiNo": "7810500549",
+      "vergiDairesi": "MERTER"
+    },
+    {
+      "id": 1947,
+      "name": "MERİÇOĞLU İNŞ.SAN.REKLAM HİZM.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "617033823",
+      "vergiDairesi": "ZİNCİRLİKUYU"
+    },
+    {
+      "id": 1973,
+      "name": "Kocaağa Yapı",
+      "type": "O",
+      "vergiNo": "12067502014",
+      "vergiDairesi": "Tınaztepe "
+    },
+    {
+      "id": 2002,
+      "name": "TOZ Mimarlık İnşaat Taahhüt San. ve Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "8590017050",
+      "vergiDairesi": "Beşiktaş Vergi Dairesi"
+    },
+    {
+      "id": 2027,
+      "name": "CERES REKLAM",
+      "type": "O",
+      "vergiNo": "2060687376",
+      "vergiDairesi": "Sarıgazi "
+    },
+    {
+      "id": 2071,
+      "name": "MEDİCANA HASTANE İŞLETMECİLİĞİ A.Ş",
+      "type": "O",
+      "vergiNo": "4680072123",
+      "vergiDairesi": "ANADOLU KURUMLAR"
+    },
+    {
+      "id": 2104,
+      "name": "İGA HAVALİMANI İŞLETMESİ A.Ş.",
+      "type": "O",
+      "vergiNo": "4700610010",
+      "vergiDairesi": "KÜÇÜKKÖY"
+    },
+    {
+      "id": 2125,
+      "name": "H.K.K. Cevizli Özel Eğitim Merkezi Komutanlığı",
+      "type": "O",
+      "vergiNo": "4590300825",
+      "vergiDairesi": "Kartal"
+    },
+    {
+      "id": 2128,
+      "name": "YILTUR BAHADIR YILMAZ Mimarlik Proje ve İnşaat Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "9790484412",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 2158,
+      "name": "İPEK ECZANESİ",
+      "type": "O",
+      "vergiNo": "33076806924",
+      "vergiDairesi": "ŞİLE"
+    },
+    {
+      "id": 2173,
+      "name": "Novus Yapı ve Tasarım A.Ş",
+      "type": "O",
+      "vergiNo": "6320382489",
+      "vergiDairesi": "Zincirlikuyu vergi dairesi"
+    },
+    {
+      "id": 2191,
+      "name": "Emaar Libadiye Gayrimenkul Geliştirme A.Ş",
+      "type": "O",
+      "vergiNo": "333 071 7392",
+      "vergiDairesi": "Ümraniye "
+    },
+    {
+      "id": 2194,
+      "name": "Medipolitan Sağlık ve Eğitim A.Ş.",
+      "type": "O",
+      "vergiNo": "6200443970",
+      "vergiDairesi": "A Kurumlar"
+    },
+    {
+      "id": 2212,
+      "name": "ARCEN MİMARLIK MÜHENDİSLİK İNŞ. İTH. İHR. TİC. LTD. ŞTİ",
+      "type": "O",
+      "vergiNo": "0730399082",
+      "vergiDairesi": "Fatih"
+    },
+    {
+      "id": 2226,
+      "name": "ÖZ ESMER KARDEŞLER EKMEK VE UNLU MAM. İNŞ. OTOM. LTD. ŞTİ",
+      "type": "O",
+      "vergiNo": "6900267098",
+      "vergiDairesi": "AVCILAR"
+    },
+    {
+      "id": 2259,
+      "name": "DENTİZ ÖZEL DİŞ SAĞLIK HİZMETLERİ LTD. ŞTİ",
+      "type": "O",
+      "vergiNo": "2920624655",
+      "vergiDairesi": "Kozyatağı"
+    },
+    {
+      "id": 2270,
+      "name": "Türkiye Vakıflar Bankası T.A.O.",
+      "type": "O",
+      "vergiNo": "9220034970",
+      "vergiDairesi": "B. Mükellefler"
+    },
+    {
+      "id": 2282,
+      "name": "EG STÜDYO İNŞAAT MİMARLIK MÜHENDİSLİK SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "3250597996",
+      "vergiDairesi": "Beykoz "
+    },
+    {
+      "id": 2299,
+      "name": "AYAM ENERJİ SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "1060652616",
+      "vergiDairesi": "Beşiktaş"
+    },
+    {
+      "id": 2342,
+      "name": "DİKEY YAPIM İNŞAAT TURİZM GIDA SAN.VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "2960207603",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 2360,
+      "name": "Tahincioğlu Küçükyalı Adi Ortaklığı",
+      "type": "O",
+      "vergiNo": "8160591388",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 2388,
+      "name": "YAZICI İNŞAAT & DEKORASYON MUZAFFER YAZICI",
+      "type": "O",
+      "vergiNo": "37541226460",
+      "vergiDairesi": "KÜÇÜKYALI"
+    },
+    {
+      "id": 2396,
+      "name": "Baymer Turizm ve Yatırım A.Ş.",
+      "type": "O",
+      "vergiNo": "1550013468",
+      "vergiDairesi": "Marmara Kurumlar "
+    },
+    {
+      "id": 2399,
+      "name": "EKSEN PROJECT SOLITION GROUP İNŞAAT",
+      "type": "O",
+      "vergiNo": "3240020739",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 2425,
+      "name": "Cunda Rastgele Balikcilik",
+      "type": "O",
+      "vergiNo": "2160508697",
+      "vergiDairesi": "Ayvalık "
+    },
+    {
+      "id": 2540,
+      "name": "Inovadent Ortodonti Ağız ve Diş Sağlığı Polikliniği",
+      "type": "O",
+      "vergiNo": "4780539752",
+      "vergiDairesi": "Kozyatağı "
+    },
+    {
+      "id": 2635,
+      "name": "DEVEL MOBİLYA DEKORASYON TİC.SAN.AŞ.",
+      "type": "O",
+      "vergiNo": "294 059 4521",
+      "vergiDairesi": "ZİNCİRLİKUYU"
+    },
+    {
+      "id": 2683,
+      "name": "ACIBADEM ATAŞEHİR CERRAHİ TIP MERKEZİ",
+      "type": "O",
+      "vergiNo": "0050175925",
+      "vergiDairesi": "ANADOLU KURUMLAR"
+    },
+    {
+      "id": 2696,
+      "name": "GERRMAX İNŞAAT VE DEKORASYON SİSTEMLERİ AŞ.",
+      "type": "O",
+      "vergiNo": "3940874283",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 2730,
+      "name": "ACIBADEM ÜNİVERSİTESİ",
+      "type": "O",
+      "vergiNo": "0050521966",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 2771,
+      "name": "AKROTES MİMARLIK A.Ş",
+      "type": "O",
+      "vergiNo": "0340367054",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 2836,
+      "name": "VADİSTANBUL AVM HİZMETLERİ AŞ.",
+      "type": "O",
+      "vergiNo": "8830432694",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 2839,
+      "name": "ALAPLI AYHAN İNŞAAT TAAHHÜT SAN. VE TİÇ. LTD.ŞTİ",
+      "type": "O",
+      "vergiNo": "0480531626",
+      "vergiDairesi": "EREĞLİ"
+    },
+    {
+      "id": 2857,
+      "name": "ENDORA DIŞ TİCARET LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "3340920290",
+      "vergiDairesi": "TUZLA"
+    },
+    {
+      "id": 2863,
+      "name": "VOLNUR SAĞLIK HİZMETLERİ LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "9250432574 ",
+      "vergiDairesi": "TUZLA VD"
+    },
+    {
+      "id": 2868,
+      "name": "KILINÇ HUKUK VE DANIŞMANLIK / AVUKAT LEVENT LEZGİN KILINÇ",
+      "type": "O",
+      "vergiNo": "555 049 6050",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 2876,
+      "name": "SUMMA TURİZM YATIRIMCILIĞI AŞ.",
+      "type": "O",
+      "vergiNo": "7820053504",
+      "vergiDairesi": "KAVAKLIDERE"
+    },
+    {
+      "id": 2883,
+      "name": "BUTEM MİMARLIK MÜHENDİSLİK İNŞAAT ENERJİ YATIRIM SAN. TİC. A.Ş.",
+      "type": "O",
+      "vergiNo": "1910437287",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 2905,
+      "name": "FF GRUP İNŞAAT SANAYİ VE TİC A.Ş",
+      "type": "O",
+      "vergiNo": "3850681654",
+      "vergiDairesi": "Sultanbeyli"
+    },
+    {
+      "id": 2920,
+      "name": "TGD MİMARLIK LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "843 055 3867",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 2967,
+      "name": "GÜNCEL GRUP ELEKTROMEKANİK LTD.ŞTİ",
+      "type": "O",
+      "vergiNo": "4270550039",
+      "vergiDairesi": ""
+    },
+    {
+      "id": 2969,
+      "name": "İNCE YAPI SİSTEMLERİ",
+      "type": "O",
+      "vergiNo": "27149060290",
+      "vergiDairesi": "ULUÇINAR"
+    },
+    {
+      "id": 3007,
+      "name": "ÖZEL TÜM EĞİTİM HİZMETLERİ LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6850362190",
+      "vergiDairesi": "Ali Fuat Cebesoy V.D."
+    },
+    {
+      "id": 3008,
+      "name": "AVRUPAKENT GAYRİMENKUL GELİŞTİRME A.Ş.",
+      "type": "O",
+      "vergiNo": "1050571029",
+      "vergiDairesi": "BAKIRKÖY"
+    },
+    {
+      "id": 3011,
+      "name": "KLN SAĞLIK VE EĞİTİM HİZ. A.Ş.",
+      "type": "O",
+      "vergiNo": "5640545072",
+      "vergiDairesi": "Şişli"
+    },
+    {
+      "id": 3014,
+      "name": "DORAKS TEKNOLOJİK ÜRÜNLER SAN. ve TİC. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "3100503025",
+      "vergiDairesi": "Kozyatağı "
+    },
+    {
+      "id": 3018,
+      "name": "YH Ünsal İnşaat Taah. Müh. Müş. Tekstil Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "9530383441",
+      "vergiDairesi": "BAŞKENT"
+    },
+    {
+      "id": 3021,
+      "name": "ÖZ-MADEŞ MADENİ EŞYA SAN. TİC. A.Ş.",
+      "type": "O",
+      "vergiNo": "6620068200",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 3027,
+      "name": "REGA AKADEMİ EĞİTİM DAN. SAN. TİC. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "7341813870",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 3032,
+      "name": "Aksakal Yatırım İnşaat İşletmeleri A.Ş.",
+      "type": "O",
+      "vergiNo": "0340762174",
+      "vergiDairesi": "KADIKÖY"
+    },
+    {
+      "id": 3036,
+      "name": "ONUR KARDEŞLER KUYUMCULUK VE DAY.TÜK.MALL.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6430074424",
+      "vergiDairesi": "TUNA V.D."
+    },
+    {
+      "id": 3041,
+      "name": "FC CONCEPT YAPI DKR.İNŞ. SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "3850679748",
+      "vergiDairesi": "KÜÇÜKKÖY"
+    },
+    {
+      "id": 3045,
+      "name": "AK-PRES METAL YEDEK PARÇA MAKİNE SAN. VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "0110042184",
+      "vergiDairesi": "ERTUĞRULGAZİ"
+    },
+    {
+      "id": 3056,
+      "name": "İSMA GİYİM VE ULAŞ. İTH. VE İHR. TİC. LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "4810567431",
+      "vergiDairesi": "BEYAZIT"
+    },
+    {
+      "id": 3064,
+      "name": "ACIBADEM SAĞLIK ESKİŞEHİR HST.",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 3069,
+      "name": "GÖKTAŞ GIDA VE UNLU MAM.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "4060283726",
+      "vergiDairesi": "MECİDİYEKÖY"
+    },
+    {
+      "id": 3076,
+      "name": "KKB KREDİ KAYIT BÜROSU A.Ş.",
+      "type": "O",
+      "vergiNo": "5640004227",
+      "vergiDairesi": "ANADOLU KURUMLAR"
+    },
+    {
+      "id": 3077,
+      "name": "TP Petrol Dağıtım A.Ş.",
+      "type": "O",
+      "vergiNo": "8590539021",
+      "vergiDairesi": "YENİKAPI"
+    },
+    {
+      "id": 3078,
+      "name": "DERİN KİMYA SANAYİ VE TİCARET A.Ş.",
+      "type": "O",
+      "vergiNo": "2930944354",
+      "vergiDairesi": "ALEMDAĞ"
+    },
+    {
+      "id": 3081,
+      "name": "KALYON İŞLETME VE YÖNETİM DANIŞMANLIĞI ANONİM ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "4931267178",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 3083,
+      "name": "SAY AHŞAP TASARIM UYG. VE SAN. TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7540929236",
+      "vergiDairesi": "BÜYÜKÇEKMECE"
+    },
+    {
+      "id": 3092,
+      "name": "BPA DIŞ TİCARET ENDÜSTRİYEL VE MEDİKAL EKİPMANLAR SAN. A.Ş.",
+      "type": "O",
+      "vergiNo": "8430357198",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 3101,
+      "name": "AKGİRİŞİM MÜTEAHHİTLİK MÜŞ. ve ÇEVRE TEKNO. SAN.TİC.A.Ş.",
+      "type": "O",
+      "vergiNo": "0300494719",
+      "vergiDairesi": "Mecidiyeköy"
+    },
+    {
+      "id": 3108,
+      "name": "KORAY İNŞ.SAN.VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "577 035 47 86",
+      "vergiDairesi": "B.KURUMLAR"
+    },
+    {
+      "id": 3112,
+      "name": "ACIBADEM SAĞLIK HİZMETLERİ VE TİCARET AŞ.",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 3116,
+      "name": "ACIBADEM SAĞLIK BODRUM HASTANESİ",
+      "type": "O",
+      "vergiNo": "005000490",
+      "vergiDairesi": "BÜYÜKKURUMLAR"
+    },
+    {
+      "id": 3122,
+      "name": "KURAN DEKORASYON İNŞ. MOBİLYA SAN. TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "593 036 7894",
+      "vergiDairesi": "BEŞİKTAŞ"
+    },
+    {
+      "id": 3129,
+      "name": "23 PAFTA 15123 PARSEL DEKON PLUS SİTE YÖNETİCİLİĞİ",
+      "type": "O",
+      "vergiNo": "",
+      "vergiDairesi": "SARIGAZİ"
+    },
+    {
+      "id": 3131,
+      "name": "CURE YAPI İNŞ. TAAH. SAN. VE TİC. LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "2161142130",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 3159,
+      "name": "ACIBADEM POLİKLİNK AŞ. BAHÇEŞEHİR TIP MERKEZİ",
+      "type": "O",
+      "vergiNo": "ANADOLU KURUMLAR",
+      "vergiDairesi": "0050175925"
+    },
+    {
+      "id": 3163,
+      "name": "BJK FULYA SÜLEYMAN SEBA KOMPLEKSİ TOPLU YAPI YÖNETİMİ",
+      "type": "O",
+      "vergiNo": "1780705057",
+      "vergiDairesi": "MECİDİYEKÖY"
+    },
+    {
+      "id": 3169,
+      "name": "FİELD OTOM. EKSP. MİM. VE TURİZM TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "9280720864",
+      "vergiDairesi": "K.ÇEKMECE"
+    },
+    {
+      "id": 3171,
+      "name": "THORCA TURİZM ORGANİZASYON DIŞ TİCARET. A. Ş.",
+      "type": "O",
+      "vergiNo": "3331863078",
+      "vergiDairesi": "KOZYATAĞI"
+    },
+    {
+      "id": 3177,
+      "name": "BODRUM MEDİKAL SAĞLIK HİZMETLERİ ANONİM ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "1780729409",
+      "vergiDairesi": "BODRUM"
+    },
+    {
+      "id": 3181,
+      "name": "BAIN DANIŞMANLIK HİZMETLERİ LİMİTED ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "131 074 5694",
+      "vergiDairesi": "BEŞİKTAŞ V.D."
+    },
+    {
+      "id": 3186,
+      "name": "AS TEKNOLOJİK İNŞAAT SAN. VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "0860517787",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 3213,
+      "name": "KISIKLI ÇAMLICA EĞİTİM KURUMLARI SAN. VE TİC. AŞ.",
+      "type": "O",
+      "vergiNo": "5591063453",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 3215,
+      "name": "KOÇ HOLDİNG AŞ.",
+      "type": "O",
+      "vergiNo": "5700020575",
+      "vergiDairesi": "BÜYÜK MÜKELLEFLER"
+    },
+    {
+      "id": 3241,
+      "name": "ONSERVİCES BİLİŞİM DANIŞMANLIK VE İLAÇ. HİZM. LTD. ŞTİ.",
+      "type": "O",
+      "vergiNo": "6430396529",
+      "vergiDairesi": "ALEMDAĞ"
+    },
+    {
+      "id": 3242,
+      "name": "FET RESTORAN ISLETMELERI A.S.",
+      "type": "O",
+      "vergiNo": "3850559840",
+      "vergiDairesi": "MASLAK"
+    },
+    {
+      "id": 3250,
+      "name": "Şahsuvaroğlu Dış Tic. Kim. Ürün. Oto. Paz. San. ve Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "798 019 4380",
+      "vergiDairesi": "Anadolu Kurumlar "
+    },
+    {
+      "id": 3253,
+      "name": "TRUST LINES MİMARLIK TASARIM LİMİTED ŞİRKETİ",
+      "type": "O",
+      "vergiNo": "8590574177",
+      "vergiDairesi": "ŞİŞLİ"
+    },
+    {
+      "id": 3269,
+      "name": "LU Aydınlatma",
+      "type": "O",
+      "vergiNo": "609 123 3544",
+      "vergiDairesi": "Göztepe"
+    },
+    {
+      "id": 3270,
+      "name": "ERAL İNŞAAT VE OTOMOTİV SAN.AŞ.",
+      "type": "O",
+      "vergiNo": "3370742855",
+      "vergiDairesi": "AVCILAR"
+    },
+    {
+      "id": 3280,
+      "name": "SDL AYDINLATMA SAN.ve TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "757 078 2603",
+      "vergiDairesi": "Küçükyalı V.D."
+    },
+    {
+      "id": 3302,
+      "name": "AMETAL ASANSÖR SAN. VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "0680791396",
+      "vergiDairesi": "TUZLA"
+    },
+    {
+      "id": 3306,
+      "name": "MES MEDİKAL ELEKTRONİK SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6190152540",
+      "vergiDairesi": "TUZLA"
+    },
+    {
+      "id": 3318,
+      "name": "ANDROMEDA MİMARLIK MÜH. LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "0691411784",
+      "vergiDairesi": "KARTAL"
+    },
+    {
+      "id": 3323,
+      "name": "ATAŞEHİR ACIBADEM HASTANESİ- ACIBADEM SAĞLIK",
+      "type": "O",
+      "vergiNo": "0050008904",
+      "vergiDairesi": "Büyük Mükellefler"
+    },
+    {
+      "id": 3327,
+      "name": "METUR DENİZCİLİK TUR.NAK.SAN.TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6200139331",
+      "vergiDairesi": "Kadıköy"
+    },
+    {
+      "id": 3343,
+      "name": "AYDIN ELEKTRİK MALZ. PAZARLAMA AŞ.",
+      "type": "O",
+      "vergiNo": "1150068055",
+      "vergiDairesi": "ŞİŞLİ"
+    },
+    {
+      "id": 3346,
+      "name": "LUMOS AYDINLATMA PROJE VE DANIŞMANLIK TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "6091299149",
+      "vergiDairesi": "GÖZTEPE"
+    },
+    {
+      "id": 3396,
+      "name": "PRO TANITIM SANAYI VE TICARET A.Ş.",
+      "type": "O",
+      "vergiNo": " 7330391126",
+      "vergiDairesi": "KORDON"
+    },
+    {
+      "id": 3416,
+      "name": "TONES MİMARLIK SAN. VE TİC.AŞ.",
+      "type": "O",
+      "vergiNo": "8500339880",
+      "vergiDairesi": "BEYOĞLU"
+    },
+    {
+      "id": 3425,
+      "name": "EPC ENDÜSTRİYEL HİZMETLER VE ELEKTRİK SİSTEMLERİ SANAYİ TİCARET A.Ş.",
+      "type": "O",
+      "vergiNo": "336 056 5983",
+      "vergiDairesi": "ALEMDAĞ"
+    },
+    {
+      "id": 3435,
+      "name": "Kamusal Mizah Gösteri Org. Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "4941270980",
+      "vergiDairesi": "ŞİŞLİ VERGİ DAİRESİ"
+    },
+    {
+      "id": 3445,
+      "name": "HEKİM HOLDİNG",
+      "type": "O",
+      "vergiNo": "7330343546",
+      "vergiDairesi": "YENİKAPI"
+    },
+    {
+      "id": 3448,
+      "name": "SCOPE CONTRACT",
+      "type": "O",
+      "vergiNo": "7571024576",
+      "vergiDairesi": "ÜSKÜDAR"
+    },
+    {
+      "id": 3453,
+      "name": "RASYONEL İNSAN KAYNAKLARI VE LOJİSTİK HİZM.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "7340735522",
+      "vergiDairesi": "KARTAL"
+    },
+    {
+      "id": 3486,
+      "name": "Arke Proje Yönetimi ve İnşaat Taahhüt A.Ş",
+      "type": "O",
+      "vergiNo": "0790370698",
+      "vergiDairesi": "Yenibosna VD"
+    },
+    {
+      "id": 3491,
+      "name": "OTA İnş. San.ve Tic. Ltd. Şti.",
+      "type": "O",
+      "vergiNo": "6480194173",
+      "vergiDairesi": "Başkent VD"
+    },
+    {
+      "id": 3507,
+      "name": "Ropi Aydınlatma",
+      "type": "O",
+      "vergiNo": "7350720219",
+      "vergiDairesi": "Üsküdar"
+    },
+    {
+      "id": 3515,
+      "name": "Sosyo Plus Bilgi Bil Tekn Dan Hiz Tic AS",
+      "type": "O",
+      "vergiNo": "7750421480",
+      "vergiDairesi": "Maslak"
+    },
+    {
+      "id": 3529,
+      "name": "FB Group",
+      "type": "O",
+      "vergiNo": "3851970163",
+      "vergiDairesi": "MASLAK V.D."
+    },
+    {
+      "id": 3534,
+      "name": "PROCASE SAVUNMA TEKNOLOJİLERİ SANAYİ AŞ",
+      "type": "O",
+      "vergiNo": "7330779229",
+      "vergiDairesi": "kozyatağı  "
+    },
+    {
+      "id": 3543,
+      "name": "Gusto Reklamcılık A.Ş.",
+      "type": "O",
+      "vergiNo": "4120486730",
+      "vergiDairesi": "Sarıgazi"
+    },
+    {
+      "id": 3550,
+      "name": "NGN Bilgi Teknolojileri Veri Merkezi Hizmetleri ve Danışmanlık A.Ş",
+      "type": "O",
+      "vergiNo": "631 063 7451",
+      "vergiDairesi": ""
+    },
+    {
+      "id": 3555,
+      "name": "Pes Mühendislik Taahhüt ve Ticaret Limited Şirketi",
+      "type": "O",
+      "vergiNo": "7291157925",
+      "vergiDairesi": "Maslak "
+    },
+    {
+      "id": 3563,
+      "name": "TECHNOLIGHT İNŞAAT",
+      "type": "O",
+      "vergiNo": "833 118 7773",
+      "vergiDairesi": "Antalya Kurumlar V.D."
+    },
+    {
+      "id": 3575,
+      "name": "Hazar Tasarim ve İnşaat LTD ŞTİ",
+      "type": "O",
+      "vergiNo": "4600855987",
+      "vergiDairesi": ""
+    },
+    {
+      "id": 3577,
+      "name": "VİDOBU Eğitim Teknolojiler A.Ş.",
+      "type": "O",
+      "vergiNo": "925 118 53 21",
+      "vergiDairesi": "Sarıyer"
+    },
+    {
+      "id": 3596,
+      "name": "ARCOF KAHVE GIDA AŞ",
+      "type": "O",
+      "vergiNo": "0730967243 ",
+      "vergiDairesi": "Erciyes  VN"
+    },
+    {
+      "id": 3600,
+      "name": "HİVA TASARIM DERİ MAMÜLLERİ İTH. İHR.SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "4630596823",
+      "vergiDairesi": "Mecidiyeköy"
+    },
+    {
+      "id": 3646,
+      "name": "ZU Design Studio",
+      "type": "O",
+      "vergiNo": "17057788508",
+      "vergiDairesi": "KÜÇÜKYALI"
+    },
+    {
+      "id": 3649,
+      "name": "AKKOM GAYRİMENKUL YÖNETİM VE DANIŞMANLIK AŞ.",
+      "type": "O",
+      "vergiNo": "030 049 2857",
+      "vergiDairesi": "ALEMDAĞ"
+    },
+    {
+      "id": 3659,
+      "name": "MİLGE MİMARLIK VE İNŞAAT TİCARET LİMİTED ŞİRKET",
+      "type": "O",
+      "vergiNo": "6211081255",
+      "vergiDairesi": "GAZİOSMANPAŞA"
+    },
+    {
+      "id": 3664,
+      "name": "Plusstand Mimari Tasarım A.Ş.",
+      "type": "O",
+      "vergiNo": "7300390275",
+      "vergiDairesi": "İkitelli"
+    },
+    {
+      "id": 3667,
+      "name": "AZUR METAL ALÜMİNYUM SAN. VE TİC.LTD.ŞTİ.",
+      "type": "O",
+      "vergiNo": "127 041 74 68",
+      "vergiDairesi": "Muğla V.D."
+    },
+    {
+      "id": 3678,
+      "name": "Gama Tesis Yönetim Hizmetleri A.Ş.",
+      "type": "O",
+      "vergiNo": "0080799951",
+      "vergiDairesi": "Mecidiyeköy"
+    },
+    {
+      "id": 3684,
+      "name": "TANHAND AHŞAP MOBİLYA SAN. VE TİC. LTD. ŞTİ",
+      "type": "O",
+      "vergiNo": "8200662291",
+      "vergiDairesi": "İNÖNÜ"
+    }
+  ]
+}

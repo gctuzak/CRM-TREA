@@ -2,6 +2,8 @@ const User = require('./User');
 const Contact = require('./Contact');
 const ContactEmail = require('./ContactEmail');
 const ContactPhone = require('./ContactPhone');
+const ContactField = require('./ContactField');
+const ContactFieldValue = require('./ContactFieldValue');
 const Opportunity = require('./Opportunity');
 const Task = require('./Task');
 const TaskType = require('./TaskType');
@@ -153,11 +155,35 @@ Task.belongsTo(TaskType, {
   as: 'taskType'
 });
 
+// ContactField associations
+ContactField.hasMany(ContactFieldValue, {
+  foreignKey: 'FIELDID',
+  as: 'values',
+  onDelete: 'CASCADE'
+});
+ContactFieldValue.belongsTo(ContactField, {
+  foreignKey: 'FIELDID',
+  as: 'field'
+});
+
+// Contact and ContactFieldValue associations
+Contact.hasMany(ContactFieldValue, {
+  foreignKey: 'CONTACTID',
+  as: 'customFields',
+  onDelete: 'CASCADE'
+});
+ContactFieldValue.belongsTo(Contact, {
+  foreignKey: 'CONTACTID',
+  as: 'contact'
+});
+
 module.exports = {
   User,
   Contact,
   ContactEmail,
   ContactPhone,
+  ContactField,
+  ContactFieldValue,
   Opportunity,
   Task,
   TaskType

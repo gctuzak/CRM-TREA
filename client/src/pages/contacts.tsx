@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import api from '@/lib/api';
+import api, { ApiError } from '@/lib/api';
+import { highlightContactFields } from '@/utils/textHighlight';
+import SearchLoadingState from '@/components/UI/SearchLoadingState';
+import SearchErrorState, { InlineSearchError } from '@/components/UI/SearchErrorState';
+import useSearchWithErrorHandling from '@/hooks/useSearchWithErrorHandling';
+import { showToast } from '@/lib/toast';
 
 interface Contact {
   ID: number;
@@ -18,6 +23,9 @@ interface Contact {
   ORGANIZATIONTYPEID?: number;
   TYPE?: string[];
   DATETIME?: string;
+  TCKN?: string;
+  VKN?: string;
+  TAXOFFICE?: string;
   emails?: ContactEmail[];
   phones?: ContactPhone[];
 }
@@ -52,8 +60,10 @@ export default function Contacts() {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const [newEmail, setNewEmail] = useState('');
+  const [newPhone, setNewPhone] = useState('');
+  const [newPhoneType, setNewPhoneType] = useState('mobile');
   const [newContact, setNewContact] = useState({
     NAME: '',
     COMPANY: '',
@@ -85,46 +95,70 @@ export default function Contacts() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Cleanup search timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (searchTimeout) {
-        clearTimeout(searchTimeout);
-      }
-    };
-  }, [searchTimeout]);
+  // Enhanced search with error handling
+  const searchContacts = async (searchTerm: string, signal?: AbortSignal) => {
+    const queryParams = new URLSearchParams({
+      page: '1',
+      limit: '20'
+    });
+    
+    if (searchTerm) {
+      queryParams.append('search', searchTerm);
+    }
+
+    const response = await api.get(`/api/contacts?${queryParams.toString()}`);
+    return response;
+  };
+
+  const {
+    search: performSearch,
+    retry: retrySearch,
+    clearError: clearSearchError,
+    isSearching,
+    error: searchError,
+    lastSearchTerm
+  } = useSearchWithErrorHandling(searchContacts, {
+    debounceMs: 300,
+    retryAttempts: 2,
+    retryDelay: 1000,
+    timeoutMs: 10000,
+    onSuccess: (response) => {
+      const newContacts = response.contacts || [];
+      const pagination = response.pagination;
+      
+      setContacts(newContacts);
+      setHasNextPage(pagination?.hasNextPage || false);
+      setCurrentPage(1);
+      setError('');
+    },
+    onError: (error) => {
+      console.error('Search error:', error);
+      // Don't show toast here as we handle it in the UI
+    }
+  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    setCurrentPage(1);
-    setHasNextPage(true);
-    fetchContacts(1, false, searchTerm);
+    performSearch(searchTerm);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
     
-    // Önceki timeout'u temizle
-    if (searchTimeout) {
-      clearTimeout(searchTimeout);
+    // Clear any previous search errors when user starts typing
+    if (searchError) {
+      clearSearchError();
     }
     
-    // Debounce ile arama yap (300ms bekle)
-    const newTimeout = setTimeout(() => {
-      setCurrentPage(1);
-      setHasNextPage(true);
-      fetchContacts(1, false, value);
-    }, 300);
-    
-    setSearchTimeout(newTimeout);
+    // Perform search with debouncing
+    performSearch(value);
   };
 
   const clearSearch = () => {
     setSearchTerm('');
-    setCurrentPage(1);
-    setHasNextPage(true);
-    fetchContacts(1, false, '');
+    clearSearchError();
+    performSearch('');
   };
 
   // Infinite scroll effect
@@ -136,6 +170,7 @@ export default function Contacts() {
         && hasNextPage
         && !loadingMore
         && !loading
+        && !isSearching
       ) {
         fetchContacts(currentPage + 1, true, searchTerm);
       }
@@ -143,7 +178,7 @@ export default function Contacts() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage, hasNextPage, loadingMore, loading, searchTerm]);
+  }, [currentPage, hasNextPage, loadingMore, loading, searchTerm, isSearching]);
 
   const fetchContacts = async (page = 1, append = false, search = '') => {
     const wasInputFocused = document.activeElement === searchInputRef.current;
@@ -178,8 +213,18 @@ export default function Contacts() {
 
       setHasNextPage(pagination?.hasNextPage || false);
       setCurrentPage(page);
+      setError('');
     } catch (err) {
-      setError('Bağlantı hatası');
+      const errorMessage = err instanceof ApiError 
+        ? (err.status === 0 ? 'İnternet bağlantınızı kontrol edin' : err.message)
+        : 'Veriler yüklenirken hata oluştu';
+      
+      setError(errorMessage);
+      
+      // Show toast for non-search errors
+      if (!search) {
+        showToast.error(errorMessage);
+      }
     } finally {
       setLoading(false);
       setLoadingMore(false);
@@ -203,6 +248,9 @@ export default function Contacts() {
 
   const handleEditContact = () => {
     setIsEditing(true);
+    setNewEmail('');
+    setNewPhone('');
+    setNewPhoneType('mobile');
   };
 
   const handleDeleteContact = async () => {
@@ -213,12 +261,17 @@ export default function Contacts() {
         await api.delete(`/api/contacts/${selectedContact.ID}`);
         setShowDetailModal(false);
         setSelectedContact(null);
+        showToast.success('Kişi başarıyla silindi');
         // Refresh the list
         setCurrentPage(1);
         setHasNextPage(true);
         fetchContacts(1, false, searchTerm);
       } catch (err) {
-        setError('Kişi silinirken hata oluştu');
+        const errorMessage = err instanceof ApiError 
+          ? err.message 
+          : 'Kişi silinirken hata oluştu';
+        setError(errorMessage);
+        showToast.error(errorMessage);
       }
     }
   };
@@ -228,6 +281,7 @@ export default function Contacts() {
     if (!selectedContact) return;
 
     try {
+      // Update basic contact info and tax information
       const response = await api.put(`/api/contacts/${selectedContact.ID}`, {
         name: selectedContact.NAME,
         jobtitle: selectedContact.JOBTITLE,
@@ -236,18 +290,140 @@ export default function Contacts() {
         state: selectedContact.STATE,
         country: selectedContact.COUNTRY,
         zip: selectedContact.ZIP,
-        note: selectedContact.NOTE
+        note: selectedContact.NOTE,
+        tckn: selectedContact.TCKN,
+        vkn: selectedContact.VKN,
+        taxOffice: selectedContact.TAXOFFICE
       });
+
+      // Update emails
+      if (selectedContact.emails) {
+        for (const email of selectedContact.emails) {
+          if (email.ID) {
+            await api.put(`/api/contacts/${selectedContact.ID}/emails/${email.ID}`, {
+              email: email.EMAIL
+            });
+          }
+        }
+      }
+
+      // Update phones
+      if (selectedContact.phones) {
+        for (const phone of selectedContact.phones) {
+          if (phone.ID) {
+            await api.put(`/api/contacts/${selectedContact.ID}/phones/${phone.ID}`, {
+              number: phone.NUMBER,
+              type: phone.TYPE
+            });
+          }
+        }
+      }
 
       if (response.status === 200) {
         setIsEditing(false);
+        showToast.success('Kişi başarıyla güncellendi');
+        // Refresh the contact details
+        const updatedContact = await api.get(`/api/contacts/${selectedContact.ID}`);
+        setSelectedContact({
+          ...updatedContact.contact,
+          emails: updatedContact.emails,
+          phones: updatedContact.phones
+        });
         // Refresh the list
         setCurrentPage(1);
         setHasNextPage(true);
         fetchContacts(1, false, searchTerm);
       }
     } catch (err) {
-      setError('Kişi güncellenirken hata oluştu');
+      const errorMessage = err instanceof ApiError 
+        ? err.message 
+        : 'Kişi güncellenirken hata oluştu';
+      setError(errorMessage);
+      showToast.error(errorMessage);
+    }
+  };
+
+  const handleAddEmail = async () => {
+    if (!selectedContact || !newEmail) return;
+
+    try {
+      const response = await api.post(`/api/contacts/${selectedContact.ID}/emails`, {
+        email: newEmail
+      });
+
+      if (response.status === 201) {
+        const updatedEmails = [...(selectedContact.emails || []), response.email];
+        setSelectedContact({...selectedContact, emails: updatedEmails});
+        setNewEmail('');
+        showToast.success('E-posta başarıyla eklendi');
+      }
+    } catch (err) {
+      const errorMessage = err instanceof ApiError 
+        ? err.message 
+        : 'E-posta eklenirken hata oluştu';
+      showToast.error(errorMessage);
+    }
+  };
+
+  const handleDeleteEmail = async (emailId: number) => {
+    if (!selectedContact) return;
+
+    if (confirm('Bu e-posta adresini silmek istediğinizden emin misiniz?')) {
+      try {
+        await api.delete(`/api/contacts/${selectedContact.ID}/emails/${emailId}`);
+        
+        const updatedEmails = selectedContact.emails?.filter(email => email.ID !== emailId) || [];
+        setSelectedContact({...selectedContact, emails: updatedEmails});
+        showToast.success('E-posta başarıyla silindi');
+      } catch (err) {
+        const errorMessage = err instanceof ApiError 
+          ? err.message 
+          : 'E-posta silinirken hata oluştu';
+        showToast.error(errorMessage);
+      }
+    }
+  };
+
+  const handleAddPhone = async () => {
+    if (!selectedContact || !newPhone) return;
+
+    try {
+      const response = await api.post(`/api/contacts/${selectedContact.ID}/phones`, {
+        number: newPhone,
+        type: newPhoneType
+      });
+
+      if (response.status === 201) {
+        const updatedPhones = [...(selectedContact.phones || []), response.phone];
+        setSelectedContact({...selectedContact, phones: updatedPhones});
+        setNewPhone('');
+        setNewPhoneType('mobile');
+        showToast.success('Telefon başarıyla eklendi');
+      }
+    } catch (err) {
+      const errorMessage = err instanceof ApiError 
+        ? err.message 
+        : 'Telefon eklenirken hata oluştu';
+      showToast.error(errorMessage);
+    }
+  };
+
+  const handleDeletePhone = async (phoneId: number) => {
+    if (!selectedContact) return;
+
+    if (confirm('Bu telefon numarasını silmek istediğinizden emin misiniz?')) {
+      try {
+        await api.delete(`/api/contacts/${selectedContact.ID}/phones/${phoneId}`);
+        
+        const updatedPhones = selectedContact.phones?.filter(phone => phone.ID !== phoneId) || [];
+        setSelectedContact({...selectedContact, phones: updatedPhones});
+        showToast.success('Telefon başarıyla silindi');
+      } catch (err) {
+        const errorMessage = err instanceof ApiError 
+          ? err.message 
+          : 'Telefon silinirken hata oluştu';
+        showToast.error(errorMessage);
+      }
     }
   };
 
@@ -285,15 +461,22 @@ export default function Contacts() {
           NOTES: '',
           SOURCE: ''
         });
+        showToast.success('Kişi başarıyla eklendi');
         // Reset to first page and reload
         setCurrentPage(1);
         setHasNextPage(true);
         fetchContacts(1, false, searchTerm);
       } else {
-        setError('Kontak eklenirken hata oluştu');
+        const errorMessage = 'Kişi eklenirken hata oluştu';
+        setError(errorMessage);
+        showToast.error(errorMessage);
       }
     } catch (err) {
-      setError('Bağlantı hatası');
+      const errorMessage = err instanceof ApiError 
+        ? err.message 
+        : 'Bağlantı hatası';
+      setError(errorMessage);
+      showToast.error(errorMessage);
     }
   };
 
@@ -329,25 +512,34 @@ export default function Contacts() {
                 onChange={handleSearchChange}
                 autoFocus
                 tabIndex={1}
-                className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                disabled={isSearching}
+                className="w-full px-4 py-2 pl-10 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
               />
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
+              {/* Search loading indicator */}
+              {isSearching && (
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-300 border-t-blue-600" />
+                </div>
+              )}
             </div>
             <button
               type="submit"
-              className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              disabled={isSearching}
+              className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Ara
+              {isSearching ? 'Aranıyor...' : 'Ara'}
             </button>
             {searchTerm && (
               <button
                 type="button"
                 onClick={clearSearch}
-                className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                disabled={isSearching}
+                className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 Temizle
               </button>
@@ -355,9 +547,28 @@ export default function Contacts() {
           </form>
         </div>
 
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            {error}
+        {/* General error display */}
+        {error && !searchError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 flex items-center justify-between">
+            <span>{error}</span>
+            <button
+              onClick={() => setError('')}
+              className="text-red-500 hover:text-red-700"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        )}
+
+        {/* Search error display */}
+        {searchError && (
+          <div className="mb-4">
+            <InlineSearchError 
+              error={searchError}
+              onRetry={retrySearch}
+            />
           </div>
         )}
 
@@ -458,6 +669,9 @@ export default function Contacts() {
                     setShowDetailModal(false);
                     setSelectedContact(null);
                     setIsEditing(false);
+                    setNewEmail('');
+                    setNewPhone('');
+                    setNewPhoneType('mobile');
                   }}
                   className="text-gray-400 hover:text-gray-600"
                 >
@@ -542,10 +756,171 @@ export default function Contacts() {
                     />
                   </div>
 
+                  {/* Vergi Bilgileri */}
+                  <div>
+                    <h4 className="text-md font-semibold mb-3">Vergi Bilgileri</h4>
+                    {selectedContact.TYPE?.includes('P') ? (
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">TC Kimlik No</label>
+                        <input
+                          type="text"
+                          value={selectedContact.TCKN || ''}
+                          onChange={(e) => setSelectedContact({...selectedContact, TCKN: e.target.value})}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          maxLength={11}
+                          placeholder="TC Kimlik Numarası (11 haneli)"
+                        />
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Vergi Kimlik No</label>
+                          <input
+                            type="text"
+                            value={selectedContact.VKN || ''}
+                            onChange={(e) => setSelectedContact({...selectedContact, VKN: e.target.value})}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            maxLength={10}
+                            placeholder="Vergi Kimlik Numarası (10 haneli)"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1">Vergi Dairesi</label>
+                          <input
+                            type="text"
+                            value={selectedContact.TAXOFFICE || ''}
+                            onChange={(e) => setSelectedContact({...selectedContact, TAXOFFICE: e.target.value})}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Vergi Dairesi"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Email Management Section */}
+                  <div>
+                    <h4 className="text-md font-semibold mb-3">E-posta Adresleri</h4>
+                    <div className="space-y-2">
+                      {selectedContact.emails && selectedContact.emails.map((email, index) => (
+                        <div key={email.ID} className="flex items-center space-x-2">
+                          <input
+                            type="email"
+                            value={email.EMAIL}
+                            onChange={(e) => {
+                              const updatedEmails = [...selectedContact.emails];
+                              updatedEmails[index] = { ...email, EMAIL: e.target.value };
+                              setSelectedContact({...selectedContact, emails: updatedEmails});
+                            }}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteEmail(email.ID)}
+                            className="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                          >
+                            Sil
+                          </button>
+                        </div>
+                      ))}
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="email"
+                          placeholder="Yeni e-posta adresi"
+                          value={newEmail}
+                          onChange={(e) => setNewEmail(e.target.value)}
+                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleAddEmail}
+                          disabled={!newEmail}
+                          className="px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:bg-gray-400"
+                        >
+                          Ekle
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phone Management Section */}
+                  <div>
+                    <h4 className="text-md font-semibold mb-3">Telefon Numaraları</h4>
+                    <div className="space-y-2">
+                      {selectedContact.phones && selectedContact.phones.map((phone, index) => (
+                        <div key={phone.ID} className="flex items-center space-x-2">
+                          <input
+                            type="tel"
+                            value={phone.NUMBER}
+                            onChange={(e) => {
+                              const updatedPhones = [...selectedContact.phones];
+                              updatedPhones[index] = { ...phone, NUMBER: e.target.value };
+                              setSelectedContact({...selectedContact, phones: updatedPhones});
+                            }}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                          <select
+                            value={phone.TYPE || 'mobile'}
+                            onChange={(e) => {
+                              const updatedPhones = [...selectedContact.phones];
+                              updatedPhones[index] = { ...phone, TYPE: e.target.value };
+                              setSelectedContact({...selectedContact, phones: updatedPhones});
+                            }}
+                            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          >
+                            <option value="mobile">Mobil</option>
+                            <option value="home">Ev</option>
+                            <option value="work">İş</option>
+                            <option value="fax">Faks</option>
+                          </select>
+                          <button
+                            type="button"
+                            onClick={() => handleDeletePhone(phone.ID)}
+                            className="px-3 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                          >
+                            Sil
+                          </button>
+                        </div>
+                      ))}
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="tel"
+                          placeholder="Yeni telefon numarası"
+                          value={newPhone}
+                          onChange={(e) => setNewPhone(e.target.value)}
+                          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <select
+                          value={newPhoneType}
+                          onChange={(e) => setNewPhoneType(e.target.value)}
+                          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="mobile">Mobil</option>
+                          <option value="home">Ev</option>
+                          <option value="work">İş</option>
+                          <option value="fax">Faks</option>
+                        </select>
+                        <button
+                          type="button"
+                          onClick={handleAddPhone}
+                          disabled={!newPhone}
+                          className="px-3 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:bg-gray-400"
+                        >
+                          Ekle
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="flex justify-end space-x-2">
                     <button
                       type="button"
-                      onClick={() => setIsEditing(false)}
+                      onClick={() => {
+                        setIsEditing(false);
+                        setNewEmail('');
+                        setNewPhone('');
+                        setNewPhoneType('mobile');
+                      }}
                       className="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"
                     >
                       İptal
@@ -614,6 +989,35 @@ export default function Contacts() {
                             <p className="text-gray-500">-</p>
                           )}
                         </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3">Vergi Bilgileri</h3>
+                      <div className="space-y-2">
+                        {selectedContact.TYPE?.includes('P') ? (
+                          <div>
+                            <span className="text-sm font-medium text-gray-500">TC Kimlik No:</span>
+                            <p className="text-gray-900">{selectedContact.TCKN || '-'}</p>
+                          </div>
+                        ) : (
+                          <>
+                            <div>
+                              {selectedContact.VKN && (
+                                <div>
+                                  <span className="text-sm font-medium text-gray-500">Vergi Kimlik No:</span>
+                                  <p className="text-gray-900">{selectedContact.VKN}</p>
+                                </div>
+                              )}
+                              {selectedContact.TAXOFFICE && (
+                                <div>
+                                  <span className="text-sm font-medium text-gray-500">Vergi Dairesi:</span>
+                                  <p className="text-gray-900">{selectedContact.TAXOFFICE}</p>
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -695,65 +1099,117 @@ export default function Contacts() {
           </div>
         )}
 
+        {/* Search loading state */}
+        {isSearching && searchTerm && (
+          <SearchLoadingState 
+            isSearching={isSearching}
+            searchTerm={searchTerm}
+            className="mb-6"
+          />
+        )}
+
+        {/* Search error state */}
+        {searchError && searchTerm && !isSearching && (
+          <SearchErrorState
+            error={searchError}
+            searchTerm={searchTerm}
+            onRetry={retrySearch}
+            onClearSearch={clearSearch}
+            className="mb-6"
+          />
+        )}
+
+        {/* No results state */}
+        {!isSearching && !searchError && searchTerm && contacts.length === 0 && (
+          <div className="bg-white rounded-lg shadow p-8 text-center">
+            <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Kişi bulunamadı</h3>
+            <p className="text-sm text-gray-500 mb-4">
+              "{searchTerm}" için herhangi bir sonuç bulunamadı.
+            </p>
+            <button
+              onClick={clearSearch}
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200"
+            >
+              Aramayı temizle
+            </button>
+          </div>
+        )}
+
         {/* Contacts List */}
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İsim</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bağlı Şirket</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pozisyon</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lokasyon</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İletişim</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {Array.isArray(contacts) && contacts.map((contact) => (
-                <tr 
-                  key={contact.ID} 
-                  className="hover:bg-gray-50 cursor-pointer"
-                  onClick={() => handleContactClick(contact)}
-                >
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
-                      {contact.NAME}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {contact.TYPE?.includes('P') ? 'Kişi' : 'Şirket'}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{contact.PARENTCONTACTNAME || '-'}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{contact.JOBTITLE || contact.TITLE || '-'}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{contact.CITY || '-'}</div>
-                    <div className="text-sm text-gray-500">{contact.STATE || ''}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
-                      {contact.emails && contact.emails.length > 0 ? contact.emails[0].EMAIL : '-'}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {contact.phones && contact.phones.length > 0 ? contact.phones[0].NUMBER : '-'}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {contact.DATETIME ? new Date(contact.DATETIME).toLocaleDateString('tr-TR') : '-'}
-                  </td>
+        {!isSearching && !searchError && contacts.length > 0 && (
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İsim</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bağlı Şirket</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pozisyon</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Lokasyon</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">İletişim</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
                 </tr>
-              ))}
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {Array.isArray(contacts) && contacts.map((contact) => {
+                  const highlightedFields = highlightContactFields(contact, searchTerm);
+                  
+                  return (
+                    <tr 
+                      key={contact.ID} 
+                      className="hover:bg-gray-50 cursor-pointer"
+                      onClick={() => handleContactClick(contact)}
+                    >
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div 
+                          className="text-sm font-medium text-gray-900"
+                          dangerouslySetInnerHTML={{ __html: highlightedFields.name || '-' }}
+                        />
+                        <div className="text-sm text-gray-500">
+                          {contact.TYPE?.includes('P') ? 'Kişi' : 'Şirket'}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div 
+                          className="text-sm text-gray-900"
+                          dangerouslySetInnerHTML={{ __html: highlightedFields.company || '-' }}
+                        />
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div 
+                          className="text-sm text-gray-900"
+                          dangerouslySetInnerHTML={{ __html: highlightedFields.position || '-' }}
+                        />
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                      <div 
+                        className="text-sm text-gray-900"
+                        dangerouslySetInnerHTML={{ __html: highlightedFields.city || '-' }}
+                      />
+                      <div className="text-sm text-gray-500">{contact.STATE || ''}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div 
+                        className="text-sm text-gray-900"
+                        dangerouslySetInnerHTML={{ __html: highlightedFields.email || '-' }}
+                      />
+                      <div 
+                        className="text-sm text-gray-500"
+                        dangerouslySetInnerHTML={{ __html: highlightedFields.phone || '-' }}
+                      />
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {contact.DATETIME ? new Date(contact.DATETIME).toLocaleDateString('tr-TR') : '-'}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
-          {Array.isArray(contacts) && contacts.length === 0 && !loading && (
-            <div className="text-center py-8 text-gray-500">
-              Henüz kontak bulunmuyor.
-            </div>
-          )}
         </div>
+        )}
 
         {/* Loading More Indicator */}
         {loadingMore && (
@@ -766,21 +1222,27 @@ export default function Contacts() {
         )}
 
         {/* Load More Button */}
-        {hasNextPage && !loadingMore && contacts.length > 0 && (
+        {hasNextPage && !loadingMore && contacts.length > 0 && !isSearching && (
           <div className="text-center py-4">
             <button
               onClick={() => fetchContacts(currentPage + 1, true, searchTerm)}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              disabled={loadingMore}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Daha Fazla Yükle
+              {loadingMore ? 'Yükleniyor...' : 'Daha Fazla Yükle'}
             </button>
           </div>
         )}
 
         {/* End of Results Indicator */}
-        {!hasNextPage && contacts.length > 0 && (
+        {!hasNextPage && contacts.length > 0 && !isSearching && (
           <div className="text-center py-4">
-            <span className="text-sm text-gray-500">Tüm kayıtlar yüklendi ({contacts.length} kayıt)</span>
+            <span className="text-sm text-gray-500">
+              {searchTerm 
+                ? `"${searchTerm}" için tüm sonuçlar gösteriliyor (${contacts.length} kayıt)`
+                : `Tüm kayıtlar yüklendi (${contacts.length} kayıt)`
+              }
+            </span>
           </div>
         )}
     </div>

@@ -1,0 +1,58 @@
+{
+  "totalExcelRecords": 3683,
+  "totalDbRecords": 1484,
+  "extractedRecordIds": 1482,
+  "matches": 1482,
+  "missingInDb": 0,
+  "extraInDb": 2,
+  "nameDifferences": 0,
+  "taxComparison": {
+    "bothHave": 0,
+    "onlyDbHas": 223,
+    "onlyExcelHas": 0,
+    "neitherHas": 1259,
+    "different": []
+  },
+  "excelColumns": [
+    "İlişki Türü",
+    "Müşteri Adı",
+    "Kişi/Kurum Türü",
+    "Eposta 1",
+    "Telefon 1",
+    "Adres",
+    "İl",
+    "İlçe/Bölge",
+    "Sayfa Linki",
+    "Kayıt ID",
+    "Müşteri Temsilcisi",
+    "Web Sayfası",
+    "Yetkili",
+    "Son Düzenleyen",
+    "Kaydı Giren"
+  ],
+  "taxColumns": [],
+  "missingInDbList": [],
+  "extraInDbList": [
+    {
+      "ID": 3700,
+      "NAME": "IO Yapı",
+      "ADDRESS": "Ferhatpasa Mahallesi, 29. Sokak, No: 21 34888 Ataşehir / İSTANBUL / TÜRKİYE",
+      "CITY": "İstanbul",
+      "STATE": "Ataşehir",
+      "NOTE": "",
+      "TAX_NUMBER": null,
+      "TAX_OFFICE": null
+    },
+    {
+      "ID": 3703,
+      "NAME": "ETS Tur",
+      "ADDRESS": "Etstur Genel Müdürlük Merdivenköy Mh. Nur Sk. 1I/11 C Blok Kadıköy – İstanbul",
+      "CITY": "İstanbul",
+      "STATE": "Kadıköy",
+      "NOTE": "",
+      "TAX_NUMBER": null,
+      "TAX_OFFICE": null
+    }
+  ],
+  "nameDifferencesList": []
+}

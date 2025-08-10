@@ -10,6 +10,7 @@ This CRM system provides a complete solution for managing customer relationships
 
 ### Core Functionality
 - **Contact Management**: Create, edit, and organize customer contacts with multiple emails and phone numbers
+- **Excel Data Import**: Import customer data from Excel files with automatic data validation and cleaning
 - **Opportunity Tracking**: Manage sales opportunities through customizable pipeline stages
 - **Task Management**: Assign and track tasks with priorities, due dates, and status updates
 - **User Management**: Role-based access control with Admin, Manager, and User roles
@@ -19,8 +20,13 @@ This CRM system provides a complete solution for managing customer relationships
 - **RESTful API**: Well-structured API endpoints with comprehensive validation
 - **JWT Authentication**: Secure token-based authentication system
 - **Role-based Authorization**: Granular permissions based on user roles
+- **Excel Processing**: Advanced Excel file analysis and data import with XLSX library
 - **Data Validation**: Input validation and sanitization at multiple levels
+- **Custom Fields**: Dynamic custom field support for flexible data storage
+- **Phone Number Cleaning**: Automatic phone number formatting and validation
+- **Email Validation**: Email address validation with length constraints
 - **Error Handling**: Comprehensive error handling with meaningful messages
+- **Import Reporting**: Detailed import reports with success/failure statistics
 - **Pagination**: Efficient data pagination for large datasets
 - **Search & Filtering**: Advanced search and filtering capabilities
 - **Audit Trail**: Track changes and user activities
@@ -36,6 +42,7 @@ This CRM system provides a complete solution for managing customer relationships
 - **Validation**: Joi
 - **Security**: bcrypt, helmet, cors
 - **Environment**: dotenv
+- **Excel Processing**: xlsx library for Excel file handling
 
 ### Frontend
 - **Framework**: Next.js 14
@@ -97,10 +104,23 @@ USE crm_system;
 source database/schema.sql;
 ```
 
-### 3. Backend Setup
+### 3. Install Dependencies
 ```bash
+# Install root dependencies (includes xlsx for Excel processing)
+npm install
+
+# Install server dependencies
 cd server
 npm install
+
+# Install client dependencies
+cd ../client
+npm install
+```
+
+### 4. Backend Setup
+```bash
+cd ../server
 
 # Create environment file
 cp .env.example .env
@@ -114,10 +134,9 @@ JWT_SECRET=your_jwt_secret
 PORT=3001
 ```
 
-### 4. Frontend Setup
+### 5. Frontend Setup
 ```bash
 cd ../client
-npm install
 
 # Create environment file
 cp .env.example .env.local
@@ -158,6 +177,54 @@ cd client
 npm run build
 npm start
 ```
+
+## Excel Data Import
+
+The system supports importing customer data from Excel files with automatic data validation and cleaning.
+
+### Supported Excel Format
+
+The Excel file should contain the following columns (Turkish headers supported):
+- **Müşteri Adı** (Customer Name)
+- **Eposta 1, Eposta 2** (Email addresses)
+- **Telefon 1, Telefon 2, Telefon 3, Telefon 4** (Phone numbers)
+- **Custom fields** (Any additional columns will be treated as custom fields)
+
+### Import Process
+
+1. **Analyze Excel File**:
+```bash
+node analyze_excel.js
+```
+This will analyze your Excel file and generate `excel_analysis.json` with column mapping information.
+
+2. **Import Data to Database**:
+```bash
+node import_excel_to_db.js
+```
+This will:
+- Clean and validate phone numbers
+- Validate email addresses (70 character limit)
+- Create or update contact records
+- Handle custom fields automatically
+- Generate detailed import report (`import_report.json`)
+
+### Import Features
+
+- **Data Validation**: Automatic phone number cleaning and email validation
+- **Custom Fields**: Dynamic custom field creation and mapping
+- **Duplicate Handling**: Updates existing contacts based on name matching
+- **Error Handling**: Continues processing even if individual records fail
+- **Progress Reporting**: Real-time progress updates during import
+- **Detailed Reports**: Comprehensive import statistics and error logs
+
+### Import Report
+
+After import, check `import_report.json` for:
+- Total records processed
+- Success/failure counts
+- Custom fields created
+- Error details
 
 ## API Documentation
 

@@ -1,0 +1,25 @@
+{
+  "totalExcelRecords": 3683,
+  "totalDbRecords": 1484,
+  "foundMatches": 0,
+  "missingInDb": [],
+  "missingTaxInfo": [],
+  "taxMismatches": [],
+  "excelColumns": [
+    "İlişki Türü",
+    "Müşteri Adı",
+    "Kişi/Kurum Türü",
+    "Eposta 1",
+    "Telefon 1",
+    "Adres",
+    "İl",
+    "İlçe/Bölge",
+    "Sayfa Linki",
+    "Kayıt ID",
+    "Müşteri Temsilcisi",
+    "Web Sayfası",
+    "Yetkili",
+    "Son Düzenleyen",
+    "Kaydı Giren"
+  ]
+}
