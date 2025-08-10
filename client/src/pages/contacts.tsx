@@ -23,6 +23,9 @@ interface Contact {
   ORGANIZATIONTYPEID?: number;
   TYPE?: string[];
   DATETIME?: string;
+  DATETIMEEDIT?: string;
+  USERID?: number;
+  USERIDEDIT?: number;
   TCKN?: string;
   VKN?: string;
   TAXOFFICE?: string;
@@ -988,8 +991,12 @@ export default function Contacts() {
                           <p className="text-gray-900">{selectedContact.PARENTCONTACTNAME || '-'}</p>
                         </div>
                         <div>
+                          <span className="text-sm font-medium text-gray-500">Hitap:</span>
+                          <p className="text-gray-900">{selectedContact.TITLE || '-'}</p>
+                        </div>
+                        <div>
                           <span className="text-sm font-medium text-gray-500">Pozisyon:</span>
-                          <p className="text-gray-900">{selectedContact.JOBTITLE || selectedContact.TITLE || '-'}</p>
+                          <p className="text-gray-900">{selectedContact.JOBTITLE || '-'}</p>
                         </div>
                       </div>
                     </div>
@@ -1056,24 +1063,31 @@ export default function Contacts() {
 
                   {/* Address Info */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-3">Adres Bilgileri</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div>
-                        <span className="text-sm font-medium text-gray-500">Adres:</span>
-                        <p className="text-gray-900">{selectedContact.ADDRESS || '-'}</p>
+                      <h3 className="text-lg font-semibold mb-3">Adres Bilgileri</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Adres:</span>
+                          <p className="text-gray-900">{selectedContact.ADDRESS || '-'}</p>
+                        </div>
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Şehir:</span>
+                          <p className="text-gray-900">{selectedContact.CITY || '-'}</p>
+                        </div>
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">İlçe/Bölge:</span>
+                          <p className="text-gray-900">{selectedContact.STATE || '-'}</p>
+                        </div>
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Posta Kodu:</span>
+                          <p className="text-gray-900">{selectedContact.ZIP || '-'}</p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-sm font-medium text-gray-500">Şehir:</span>
-                        <p className="text-gray-900">{selectedContact.CITY || '-'}</p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-medium text-gray-500">İlçe/Bölge:</span>
-                        <p className="text-gray-900">{selectedContact.STATE || '-'}</p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-medium text-gray-500">Ülke:</span>
-                        <p className="text-gray-900">{selectedContact.COUNTRY || '-'}</p>
-                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                         <div>
+                           <span className="text-sm font-medium text-gray-500">Ülke:</span>
+                           <p className="text-gray-900">{selectedContact.COUNTRY || '-'}</p>
+                         </div>
+                       </div>
                       <div>
                         <span className="text-sm font-medium text-gray-500">Posta Kodu:</span>
                         <p className="text-gray-900">{selectedContact.ZIP || '-'}</p>
@@ -1109,23 +1123,36 @@ export default function Contacts() {
                   {/* System Info */}
                   <div>
                     <h3 className="text-lg font-semibold mb-3">Sistem Bilgileri</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
-                        <span className="text-gray-500">ID:</span>
-                        <span className="ml-2 text-gray-900">{selectedContact.ID}</span>
+                        <span className="text-sm font-medium text-gray-500">Kayıt ID:</span>
+                        <p className="text-gray-900">{selectedContact.ID || '-'}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">Organizasyon Tipi ID:</span>
-                        <span className="ml-2 text-gray-900">{selectedContact.ORGANIZATIONTYPEID || '-'}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-500">Oluşturulma Tarihi:</span>
-                        <span className="ml-2 text-gray-900">
+                        <span className="text-sm font-medium text-gray-500">Kayıt Tarihi:</span>
+                        <p className="text-gray-900">
                           {selectedContact.DATETIME ? new Date(selectedContact.DATETIME).toLocaleString('tr-TR') : '-'}
-                        </span>
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Son Düzenleme:</span>
+                        <p className="text-gray-900">
+                          {selectedContact.DATETIMEEDIT ? new Date(selectedContact.DATETIMEEDIT).toLocaleString('tr-TR') : '-'}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Kaydı Giren (User ID):</span>
+                        <p className="text-gray-900">{selectedContact.USERID || '-'}</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Son Düzenleyen (User ID):</span>
+                        <p className="text-gray-900">{selectedContact.USERIDEDIT || '-'}</p>
                       </div>
                     </div>
                   </div>
+
 
                   {/* Action Buttons */}
                   <div className="flex justify-end space-x-2 pt-4 border-t">

@@ -438,7 +438,15 @@ Contact.getWithRelatedData = async function(contactId) {
       },
       emails: emails || [],
       phones: phones || [],
-      customFields: customFields || []
+      customFields: customFields || [],
+      // Excel kolonlarından eksik alanları ekle
+      TITLE: contact.TITLE,
+      ZIP: contact.ZIP,
+      PARENTCONTACTNAME: contact.PARENTCONTACTNAME,
+      USERID: contact.USERID,
+      USERIDEDIT: contact.USERIDEDIT,
+      DATETIME: contact.DATETIME,
+      DATETIMEEDIT: contact.DATETIMEEDIT
     };
     
     console.log('Returning result with emails:', result.emails.length, 'phones:', result.phones.length);
